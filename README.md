@@ -78,3 +78,4 @@ Currently using Unsplash placeholders for before/after and recent jobs. To swap 
 - Framer Motion
 - Lucide icons
 - Fraunces (display) + Inter (body) + JetBrains Mono via `next/font`
+# trident-wash
