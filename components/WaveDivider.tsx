@@ -1,22 +1,22 @@
 'use client';
 
 interface Props {
-  /** Color of the section ABOVE the divider (the wave shows the section below's bg through cutouts) */
+  /** Color of the section ABOVE the divider */
   fromColor?: string;
-  /** Color of the section BELOW */
+  /** Color of the section BELOW the divider */
   toColor?: string;
-  /** Flip vertically — useful when transitioning from a light to dark section */
+  /** Flip vertically */
   flip?: boolean;
-  /** Height of the wave area in px */
+  /** Height in px */
   height?: number;
   className?: string;
 }
 
 export default function WaveDivider({
-  fromColor = '#04222B',
-  toColor = '#FBF7EE',
+  fromColor = '#FFFFFF',
+  toColor = '#FFFFFF',
   flip = false,
-  height = 80,
+  height = 90,
   className = '',
 }: Props) {
   return (
@@ -29,23 +29,23 @@ export default function WaveDivider({
         transform: flip ? 'rotate(180deg)' : undefined,
       }}
     >
-      {/* Back wave (slower, more transparent) */}
+      {/* Back wave — cyan, slow */}
       <svg
-        className="absolute inset-x-0 bottom-0 w-[200%] h-full animate-wave-divider-back"
+        className="absolute inset-x-0 bottom-0 w-[200%] h-full animate-wave-back"
         viewBox="0 0 2880 120"
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
           d="M0,40 C240,80 480,10 720,40 C960,70 1200,20 1440,40 C1680,60 1920,15 2160,40 C2400,65 2640,20 2880,40 L2880,0 L0,0 Z"
-          fill={fromColor}
-          fillOpacity="0.6"
+          fill="#00B8D9"
+          fillOpacity="0.55"
         />
       </svg>
 
-      {/* Front wave (faster, full opacity) */}
+      {/* Front wave — fromColor, full */}
       <svg
-        className="absolute inset-x-0 top-0 w-[200%] h-full animate-wave-divider-front"
+        className="absolute inset-x-0 top-0 w-[200%] h-full animate-wave-front"
         viewBox="0 0 2880 120"
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -56,20 +56,36 @@ export default function WaveDivider({
         />
       </svg>
 
+      {/* Yellow accent stripe — catches the eye */}
+      <svg
+        className="absolute inset-x-0 top-1/2 -translate-y-1/2 w-[200%] h-2 animate-wave-back"
+        viewBox="0 0 2880 8"
+        preserveAspectRatio="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0,4 C240,2 480,6 720,4 C960,2 1200,6 1440,4 C1680,2 1920,6 2160,4 C2400,2 2640,6 2880,4"
+          stroke="#FFD60A"
+          strokeWidth="3"
+          strokeLinecap="round"
+          fill="none"
+        />
+      </svg>
+
       <style jsx>{`
-        @keyframes wave-back {
+        @keyframes wave-back-anim {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
-        @keyframes wave-front {
+        @keyframes wave-front-anim {
           0% { transform: translateX(-50%); }
           100% { transform: translateX(0); }
         }
-        .animate-wave-divider-back {
-          animation: wave-back 22s linear infinite;
+        .animate-wave-back {
+          animation: wave-back-anim 22s linear infinite;
         }
-        .animate-wave-divider-front {
-          animation: wave-front 14s linear infinite;
+        .animate-wave-front {
+          animation: wave-front-anim 14s linear infinite;
         }
       `}</style>
     </div>

@@ -17,7 +17,7 @@ export const SITE = {
 export const STATS = [
   { value: 100, suffix: '+', label: 'Five-star reviews', tag: 'Google verified' },
   { value: 850, suffix: '+', label: 'Properties cleaned', tag: 'Across Melbourne' },
-  { value: 5.0, suffix: '★', label: 'Average rating', tag: 'Every platform', decimals: 1 },
+  { value: 4.8, suffix: '★', label: 'Average rating', tag: 'Every platform', decimals: 1 },
   { value: 100, suffix: '%', label: 'Satisfaction promise', tag: 'Or we come back' },
 ];
 

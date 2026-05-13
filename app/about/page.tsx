@@ -1,32 +1,63 @@
+'use client';
+
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import CTA from '@/components/CTA';
 import Stats from '@/components/Stats';
-import WaterParticles from '@/components/WaterParticles';
-import WaveDivider from '@/components/WaveDivider';
-import { WaterSplash } from '@/components/WaterSplash';
-import { Award, Shield, Sparkles, Heart } from 'lucide-react';
+import HazardTape from '@/components/HazardTape';
+import { motion } from 'framer-motion';
+import { Award, Shield, Sparkles, Heart, ArrowRight, Phone } from 'lucide-react';
+import Link from 'next/link';
+import { SITE } from '@/lib/data';
 
 const VALUES = [
   {
     icon: Award,
     title: 'Done right or done again',
-    body: 'If anything isn\'t up to standard, we come back. Every job, every time. No fine print.',
+    body: "If anything isn't up to standard, we come back. Every job, every time. No fine print.",
+    style: {
+      wrapper: 'bg-white border-2 border-slate-900 shadow-[6px_6px_0_0_#00B8D9] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0_0_#00B8D9]',
+      icon: 'bg-[#00B8D9] text-white',
+      title: 'text-slate-900',
+      body: 'text-slate-600',
+      rotation: '-rotate-1',
+    },
   },
   {
     icon: Shield,
     title: 'Fully insured, properly trained',
     body: 'Public liability up to $20m. Police-checked operators. Insurance certificates available on request.',
+    style: {
+      wrapper: 'bg-yellow-400 border-2 border-slate-900 shadow-[6px_6px_0_0_#0F172A] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0_0_#0F172A]',
+      icon: 'bg-slate-900 text-yellow-400',
+      title: 'text-slate-900',
+      body: 'text-slate-900/70',
+      rotation: 'rotate-1',
+    },
   },
   {
     icon: Sparkles,
     title: 'The right method per surface',
     body: 'High pressure for hard. Soft wash for delicate. The wrong method etches concrete and forces water under render.',
+    style: {
+      wrapper: 'bg-[#00B8D9] border-2 border-slate-900 shadow-[6px_6px_0_0_#FFD60A] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0_0_#FFD60A]',
+      icon: 'bg-yellow-400 text-slate-900',
+      title: 'text-slate-900',
+      body: 'text-slate-900/75',
+      rotation: '-rotate-1',
+    },
   },
   {
     icon: Heart,
     title: 'Family business mentality',
     body: 'Sunny answers his own phone. The crew you meet is the crew that does the work. No subcontracting, ever.',
+    style: {
+      wrapper: 'bg-slate-900 border-2 border-slate-900 shadow-[6px_6px_0_0_#FFD60A] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0_0_#FFD60A]',
+      icon: 'bg-yellow-400 text-slate-900',
+      title: 'text-yellow-400',
+      body: 'text-white/75',
+      rotation: 'rotate-1',
+    },
   },
 ];
 
@@ -35,122 +66,317 @@ export default function AboutPage() {
     <main>
       <Nav />
 
-      {/* Hero */}
-      <section className="pt-32 pb-24 lg:pt-40 lg:pb-32 bg-ink-900 relative overflow-hidden">
-        <div className="absolute inset-0 water-mesh" />
-        <div className="absolute -top-40 -left-40 w-[700px] h-[700px] rounded-full bg-cyan-300/40 splash animate-wave-slow" />
-        <div className="absolute -bottom-40 -right-40 w-[700px] h-[700px] rounded-full bg-sky-300/40 splash animate-wave" />
-        <WaterParticles density="medium" />
+      {/* ── HERO ─────────────────────────────────────────────── */}
+      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-white overflow-hidden">
+        {/* Glow blobs */}
+        <div className="absolute top-0 -left-40 w-[600px] h-[600px] rounded-full bg-[#00B8D9]/10 blur-[100px] pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-yellow-300/20 blur-[100px] pointer-events-none" />
 
-        <div className="relative z-10 max-w-[1100px] mx-auto px-6 lg:px-10 text-center">
-          <div className="text-xs tracking-[0.3em] uppercase text-cyan-300 mb-6">
-            ◆ The story
+        {/* Watermark */}
+        <div className="absolute top-[15%] left-1/2 -translate-x-1/2 pointer-events-none select-none opacity-[0.04]">
+          <div className="font-display text-[22vw] leading-none tracking-tightest text-slate-900 whitespace-nowrap">
+            ABOUT
           </div>
-          <h1 className="font-display text-6xl lg:text-9xl leading-[0.85] tracking-tightest text-cream-50 mb-10">
-            One man,
-            <br />
-            <span className="italic gradient-text">a machine,</span>
-            <br />
-            and a standard.
-          </h1>
-          <p className="text-xl lg:text-2xl text-cream-100/80 leading-relaxed max-w-2xl mx-auto">
-            Sunny started Trident in 2022 with a simple idea: do the work
-            properly, photograph everything, and stand behind it.
-          </p>
+        </div>
+
+        {/* Decorative stamp */}
+        <div className="absolute top-36 right-4 lg:right-12 -rotate-6 hidden md:block pointer-events-none">
+          <div className="bg-slate-900 text-yellow-400 border-2 border-slate-900 px-4 py-2 rounded-full font-bold text-xs tracking-[0.25em] uppercase shadow-[4px_4px_0_0_#FFD60A]">
+            Est. 2022 ★
+          </div>
+        </div>
+
+        <div className="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-10">
+          {/* Label pill */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-400 border-2 border-slate-900 text-[10px] tracking-[0.3em] uppercase text-slate-900 font-bold mb-8 shadow-[4px_4px_0_0_#00B8D9]"
+          >
+            <Sparkles className="w-3 h-3" />
+            The story
+          </motion.div>
+
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="font-display leading-[0.84] tracking-tightest text-slate-900 max-w-5xl"
+          >
+            <span className="block text-[13vw] lg:text-[8.5vw]">One man,</span>
+            <span className="block text-[11vw] lg:text-[7vw] italic relative inline-block mt-1">
+              <span
+                className="bg-clip-text text-transparent"
+                style={{
+                  backgroundImage: 'linear-gradient(90deg, #00B8D9 0%, #0EA5E9 50%, #00B8D9 100%)',
+                }}
+              >
+                a machine,
+              </span>
+            </span>
+            <span className="block text-[13vw] lg:text-[8.5vw] mt-1 relative inline-block">
+              and a standard.
+              <svg
+                className="absolute -bottom-2 left-0 w-[60%]"
+                viewBox="0 0 400 12"
+                preserveAspectRatio="none"
+                fill="none"
+              >
+                <path
+                  d="M2 8 Q 100 2, 200 6 T 398 5"
+                  stroke="#FFD60A"
+                  strokeWidth="5"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
+          </motion.h1>
+
+          {/* Sub copy */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-10 lg:mt-14 text-slate-600 text-lg lg:text-xl leading-relaxed font-medium max-w-xl border-l-4 border-[#00B8D9] pl-5"
+          >
+            Sunny started Trident in 2022 with a simple idea: do the work properly, photograph everything, and stand behind it.
+          </motion.p>
         </div>
       </section>
 
-      <WaveDivider fromColor="#04222B" toColor="#FBF7EE" height={90} />
+      {/* ── HAZARD TAPE ───────────────────────────────────────── */}
+      <HazardTape className="w-full h-3" />
 
-      {/* The story body — editorial */}
-      <section className="py-24 lg:py-32 bg-cream-50 text-ink-900 relative overflow-hidden">
-        <div className="absolute -top-32 -right-32 w-[400px] h-[400px] rounded-full bg-cyan-300/20 splash" />
-        <div className="absolute bottom-1/4 -left-32 w-[400px] h-[400px] rounded-full bg-sky-300/20 splash" />
+      {/* ── STORY SECTION ─────────────────────────────────────── */}
+      <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
+        <div className="absolute top-0 -right-32 w-[500px] h-[500px] rounded-full bg-yellow-300/15 blur-[80px] pointer-events-none" />
+        <div className="absolute bottom-0 -left-32 w-[400px] h-[400px] rounded-full bg-[#00B8D9]/10 blur-[80px] pointer-events-none" />
 
-        <div className="relative max-w-[1100px] mx-auto px-6 lg:px-10">
-          <div className="grid lg:grid-cols-12 gap-10">
-            <div className="lg:col-span-5">
-              <div className="text-xs tracking-[0.3em] uppercase text-teal-500 mb-4">
-                ◆ The why
+        <div className="relative max-w-[1440px] mx-auto px-6 lg:px-10">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+
+            {/* LEFT — image */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="lg:col-span-5 relative"
+            >
+              {/* Yellow offset */}
+              <div
+                aria-hidden
+                className="absolute -top-3 -left-3 w-full h-full bg-yellow-400 rounded-3xl border-2 border-slate-900"
+              />
+              <div className="relative rounded-3xl overflow-hidden border-2 border-slate-900 shadow-[8px_8px_0_0_#00B8D9] aspect-[4/3]">
+                <img
+                  src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80"
+                  alt="Trident pressure washing operator at work"
+                  className="w-full h-full object-cover"
+                />
+                {/* Stat badge */}
+                <div className="absolute bottom-4 left-4 bg-slate-900 border-2 border-slate-900 rounded-2xl px-4 py-3 shadow-[3px_3px_0_0_#FFD60A]">
+                  <div className="font-display text-2xl leading-none text-yellow-400">2022</div>
+                  <div className="text-[9px] tracking-[0.2em] uppercase font-bold text-white/70 mt-1">Founded in Melbourne</div>
+                </div>
               </div>
-              <h2 className="font-display text-5xl lg:text-6xl leading-[0.95] tracking-tightest mb-8">
-                Most pressure
+            </motion.div>
+
+            {/* RIGHT — copy */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="lg:col-span-6 lg:col-start-7"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-400 border-2 border-slate-900 text-[10px] tracking-[0.3em] uppercase text-slate-900 font-bold mb-6 shadow-[4px_4px_0_0_#00B8D9]">
+                <Sparkles className="w-3 h-3" />
+                The why
+              </div>
+
+              <h2 className="font-display text-4xl lg:text-5xl leading-[0.9] tracking-tightest text-slate-900 mb-6">
+                Most pressure washing
                 <br />
-                washing is{' '}
-                <span className="italic text-teal-500">rushed.</span>
+                <span className="italic relative inline-block">
+                  <span
+                    className="bg-clip-text text-transparent"
+                    style={{ backgroundImage: 'linear-gradient(90deg, #00B8D9 0%, #0EA5E9 100%)' }}
+                  >
+                    is rushed.
+                  </span>
+                  <svg
+                    className="absolute -bottom-1 left-0 w-full"
+                    viewBox="0 0 400 12"
+                    preserveAspectRatio="none"
+                    fill="none"
+                  >
+                    <path
+                      d="M2 8 Q 100 2, 200 6 T 398 5"
+                      stroke="#FFD60A"
+                      strokeWidth="5"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </span>
               </h2>
-              <p className="text-ink-700/80 text-lg leading-relaxed">
-                We see it on every job. Etched concrete. Forced water under
-                render. Plants killed by overspray. Half-cleaned roofs that
-                stripe within a year.
-              </p>
-            </div>
-            <div className="lg:col-span-6 lg:col-start-7 space-y-6 text-ink-700/85 text-lg leading-relaxed pt-4">
-              <p>
-                Trident exists because Sunny got tired of fixing other people's
-                shortcuts. He'd take a job, and the surface would already be
-                damaged from the last "professional" wash.
-              </p>
-              <p>
-                So he set up his own thing. Bought the right gear — twin-lance
-                machines, surface cleaners, soft-wash injectors, pure-water
-                poles. Got insured properly. Got trained on every method.
-              </p>
-              <p>
-                Three years later, most of the work comes from referrals.
-                That's the only metric that matters.
-              </p>
-            </div>
+
+              <div className="space-y-5 text-slate-600 text-base lg:text-lg leading-relaxed font-medium border-l-4 border-[#00B8D9] pl-5">
+                <p>
+                  We see it on every job. Etched concrete. Forced water under render. Plants killed by overspray. Half-cleaned roofs that stripe within a year.
+                </p>
+                <p>
+                  Trident exists because Sunny got tired of fixing other people's shortcuts. He'd take a job, and the surface would already be damaged from the last "professional" wash.
+                </p>
+                <p>
+                  So he set up his own thing. Bought the right gear — twin-lance machines, surface cleaners, soft-wash injectors, pure-water poles. Got insured properly. Got trained on every method.
+                </p>
+                <p className="font-bold text-slate-900">
+                  Three years later, most of the work comes from referrals. That's the only metric that matters.
+                </p>
+              </div>
+
+              {/* CTA row */}
+              <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                <Link
+                  href="/contact"
+                  className="group inline-flex items-center justify-between gap-3 px-5 py-3 bg-yellow-400 text-slate-900 font-bold rounded-2xl border-2 border-slate-900 shadow-[4px_4px_0_0_#00B8D9] hover:shadow-[0_0_0_0_#00B8D9] hover:translate-x-1 hover:translate-y-1 transition-all"
+                >
+                  Get a free quote
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <a
+                  href={`tel:${SITE.phoneRaw}`}
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-white border-2 border-slate-900 text-slate-900 font-bold rounded-2xl hover:bg-slate-50 transition-colors shadow-[4px_4px_0_0_#0F172A]"
+                >
+                  <Phone className="w-4 h-4" />
+                  {SITE.phone}
+                </a>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Values grid */}
-      <section className="py-24 lg:py-32 bg-cream-50 text-ink-900 relative">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-10">
-          <div className="text-center mb-16">
-            <div className="text-xs tracking-[0.3em] uppercase text-teal-500 mb-4">
-              ◆ How we work
+      {/* ── HAZARD TAPE ───────────────────────────────────────── */}
+      <HazardTape className="w-full h-3" />
+
+      {/* ── VALUES GRID ───────────────────────────────────────── */}
+      <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
+        <div className="absolute top-1/4 -left-32 w-[500px] h-[500px] rounded-full bg-[#00B8D9]/10 blur-[80px] pointer-events-none" />
+        <div className="absolute bottom-1/4 -right-32 w-[500px] h-[500px] rounded-full bg-yellow-300/15 blur-[80px] pointer-events-none" />
+
+        {/* Watermark */}
+        <div className="absolute top-[8%] left-1/2 -translate-x-1/2 pointer-events-none select-none opacity-[0.04]">
+          <div className="font-display text-[18vw] leading-none tracking-tightest text-slate-900 whitespace-nowrap">
+            VALUES
+          </div>
+        </div>
+
+        <div className="relative max-w-[1440px] mx-auto px-6 lg:px-10">
+          {/* Header */}
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-12 lg:mb-16">
+            <div className="lg:col-span-7">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-400 border-2 border-slate-900 text-[10px] tracking-[0.3em] uppercase text-slate-900 font-bold mb-6 shadow-[4px_4px_0_0_#00B8D9]"
+              >
+                <Sparkles className="w-3 h-3" />
+                How we work
+              </motion.div>
+
+              <h2 className="font-display text-5xl lg:text-7xl leading-[0.86] tracking-tightest text-slate-900">
+                Four things we
+                <br />
+                <span className="italic relative inline-block">
+                  <span
+                    className="bg-clip-text text-transparent"
+                    style={{ backgroundImage: 'linear-gradient(90deg, #00B8D9 0%, #0EA5E9 100%)' }}
+                  >
+                    never compromise on.
+                  </span>
+                  <svg
+                    className="absolute -bottom-2 left-0 w-full"
+                    viewBox="0 0 400 12"
+                    preserveAspectRatio="none"
+                    fill="none"
+                  >
+                    <path
+                      d="M2 8 Q 100 2, 200 6 T 398 5"
+                      stroke="#FFD60A"
+                      strokeWidth="5"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </span>
+              </h2>
             </div>
-            <h2 className="font-display text-5xl lg:text-7xl leading-[0.95] tracking-tightest">
-              Four things we
-              <br />
-              <span className="italic text-teal-500">never compromise on.</span>
-            </h2>
+
+            <div className="lg:col-span-4 lg:col-start-9 flex items-end">
+              <p className="text-slate-600 text-base lg:text-lg leading-relaxed font-medium border-l-4 border-[#00B8D9] pl-5">
+                These aren't marketing lines. They're the reasons clients come back — and send their neighbours.
+              </p>
+            </div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {VALUES.map((v) => {
+          {/* Hazard tape divider */}
+          <div className="mb-10 lg:mb-14">
+            <HazardTape className="w-full h-2" />
+          </div>
+
+          {/* Value cards */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+            {VALUES.map((v, i) => {
               const Icon = v.icon;
               return (
-                <div
+                <motion.div
                   key={v.title}
-                  className="group relative bg-white border border-ink-900/10 rounded-3xl p-8 hover:border-teal-500/40 transition-colors overflow-hidden"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  className={v.style.rotation}
                 >
-                  <div className="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-cyan-300/0 group-hover:bg-cyan-300/30 splash transition-colors duration-700" />
-                  <div className="relative">
-                    <div className="w-12 h-12 rounded-2xl bg-teal-500/10 text-teal-500 flex items-center justify-center mb-6 group-hover:bg-teal-500 group-hover:text-cream-50 transition-colors">
+                  <div
+                    className={`relative rounded-3xl p-6 lg:p-8 min-h-[260px] flex flex-col transition-all duration-200 cursor-default ${v.style.wrapper}`}
+                  >
+                    {/* Icon */}
+                    <div className={`w-12 h-12 rounded-full border-2 border-slate-900 flex items-center justify-center mb-6 ${v.style.icon}`}>
                       <Icon className="w-5 h-5" />
                     </div>
-                    <h3 className="font-display text-2xl mb-3 leading-tight">
+
+                    {/* Step label */}
+                    <div className="font-mono text-[9px] tracking-[0.3em] uppercase text-current opacity-40 mb-2">
+                      {String(i + 1).padStart(2, '0')} of 04
+                    </div>
+
+                    {/* Title */}
+                    <h3 className={`font-display text-2xl lg:text-3xl leading-tight tracking-tight mb-3 ${v.style.title}`}>
                       {v.title}
                     </h3>
-                    <p className="text-ink-700/70 text-sm leading-relaxed">
+
+                    {/* Body */}
+                    <p className={`text-sm leading-relaxed mt-auto ${v.style.body}`}>
                       {v.body}
                     </p>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
         </div>
       </section>
 
-      <WaveDivider fromColor="#FBF7EE" toColor="#04222B" height={90} flip />
+      {/* ── HAZARD TAPE ───────────────────────────────────────── */}
+      <HazardTape className="w-full h-3" />
 
+      {/* ── STATS ─────────────────────────────────────────────── */}
       <Stats />
-
-      <WaveDivider fromColor="#04222B" toColor="#67E8F9" height={90} />
 
       <CTA />
       <Footer />

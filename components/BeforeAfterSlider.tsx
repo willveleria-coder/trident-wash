@@ -54,7 +54,7 @@ export default function BeforeAfterSlider({
   return (
     <div
       ref={containerRef}
-      className={`relative aspect-[4/5] select-none cursor-ew-resize overflow-hidden ${className}`}
+      className={`relative h-full w-full select-none cursor-ew-resize overflow-hidden ${className}`}
       onMouseDown={(e) => {
         setDragging(true);
         updateFromClient(e.clientX);
