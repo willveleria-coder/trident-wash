@@ -160,7 +160,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.55 }}
             className="mt-6 flex justify-center gap-3"
           >
-            <MiniStat value="100+" label="5-star jobs" color="yellow" />
+            <MiniStat value="50+" label="5-star jobs" color="yellow" />
             <MiniStat value="50+" label="Properties" color="white" />
             <MiniStat value="4.8★" label="Avg rating" color="cyan" />
           </motion.div>
