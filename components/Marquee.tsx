@@ -26,7 +26,7 @@ const ROW_1: Item[] = [
   { text: 'Soft wash specialists', variant: 'plain', icon: Droplets },
   { text: 'Police checked', variant: 'white-stamp', icon: CheckCircle2 },
   { text: 'Plant-safe methods', variant: 'plain', icon: Sparkles },
-  { text: '100+ five-star reviews', variant: 'black-chip', icon: Star },
+  { text: '50+ five-star reviews', variant: 'black-chip', icon: Star },
   { text: 'Melbourne-wide', variant: 'plain', icon: MapPin },
   { text: 'Re-clean guarantee', variant: 'cyan-badge', icon: Award },
 ];

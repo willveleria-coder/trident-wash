@@ -114,7 +114,7 @@ export default function Hero() {
             </span>
             <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border-2 border-slate-900 text-[10px] tracking-[0.25em] uppercase font-bold text-slate-900 shadow-[3px_3px_0_0_#00B8D9]">
               <Sparkles className="w-3 h-3 text-[#00B8D9]" />
-              4.8 · 100+ jobs
+              4.8 · 50+ jobs
             </span>
             <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#00B8D9] border-2 border-slate-900 text-[10px] tracking-[0.25em] uppercase font-bold text-white shadow-[3px_3px_0_0_#0F172A]">
               <Zap className="w-3 h-3" />
@@ -161,7 +161,7 @@ export default function Hero() {
             className="mt-6 flex justify-center gap-3"
           >
             <MiniStat value="100+" label="5-star jobs" color="yellow" />
-            <MiniStat value="850+" label="Properties" color="white" />
+            <MiniStat value="50+" label="Properties" color="white" />
             <MiniStat value="4.8★" label="Avg rating" color="cyan" />
           </motion.div>
 

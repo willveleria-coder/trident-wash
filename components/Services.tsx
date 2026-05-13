@@ -146,7 +146,7 @@ export default function Services() {
                     ))}
                   </div>
                   <span className="text-yellow-400 text-[10px] tracking-[0.3em] uppercase font-bold">
-                    100+ five-star jobs
+                    50+ five-star jobs
                   </span>
                 </div>
                 <div className="font-display text-4xl lg:text-6xl tracking-tightest text-white leading-[0.92]">

@@ -118,7 +118,7 @@ export default function GalleryPage() {
               </div>
             </div>
             <div className="bg-[#00B8D9] border-2 border-slate-900 rounded-2xl px-5 py-3 shadow-[4px_4px_0_0_#FFD60A] rotate-1">
-              <div className="font-display text-2xl leading-none text-white">850+</div>
+              <div className="font-display text-2xl leading-none text-white">50+</div>
               <div className="text-[9px] tracking-[0.2em] uppercase font-bold text-white/80 mt-1">
                 Properties cleaned
               </div>
@@ -292,7 +292,7 @@ export default function GalleryPage() {
                     <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                   ))}
                   <span className="text-yellow-400 text-[10px] tracking-[0.3em] uppercase font-bold">
-                    100+ five-star jobs
+                    50+ five-star jobs
                   </span>
                 </div>
                 <div className="font-display text-4xl lg:text-6xl tracking-tightest text-white leading-[0.92]">

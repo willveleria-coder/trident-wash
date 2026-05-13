@@ -91,7 +91,7 @@ export default function CTA() {
               <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
             ))}
             <span className="text-slate-500 text-xs tracking-[0.2em] uppercase font-bold ml-2">
-              100+ five-star jobs
+              50+ five-star jobs
             </span>
           </div>
 

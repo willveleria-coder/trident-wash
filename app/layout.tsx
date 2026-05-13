@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Trident — Premium Pressure Washing in Melbourne',
     description:
-      'Melbourne\'s most thorough exterior cleaning. Free quotes, fully insured, 100+ five-star reviews.',
+      'Melbourne\'s most thorough exterior cleaning. Free quotes, fully insured, 50+ five-star reviews.',
     type: 'website',
   },
 };
