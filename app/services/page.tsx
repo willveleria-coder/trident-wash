@@ -132,13 +132,13 @@ export default function ServicesPage() {
               {/* Image card */}
               <div className="relative rounded-3xl overflow-hidden border-2 border-slate-900 shadow-[8px_8px_0_0_#00B8D9] aspect-[4/3]">
                 <img
-                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80"
+                  src="/service.png"
                   alt="Professional pressure washing a driveway in Melbourne"
                   className="w-full h-full object-cover"
                 />
                 {/* Overlay badge */}
                 <div className="absolute bottom-4 left-4 bg-yellow-400 border-2 border-slate-900 rounded-2xl px-4 py-3 shadow-[3px_3px_0_0_#0F172A]">
-                  <div className="font-display text-2xl leading-none text-slate-900">100+</div>
+                  <div className="font-display text-2xl leading-none text-slate-900">50+</div>
                   <div className="text-[9px] tracking-[0.2em] uppercase font-bold text-slate-900/70 mt-1">Jobs completed</div>
                 </div>
               </div>

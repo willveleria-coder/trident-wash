@@ -8,23 +8,19 @@ import { REVIEWS } from '@/lib/data';
 export default function Reviews() {
   return (
     <section id="reviews" className="relative py-24 lg:py-32 bg-white text-slate-900 overflow-hidden">
-      {/* Glow accents */}
       <div className="absolute top-1/4 -left-32 w-[500px] h-[500px] rounded-full bg-[#00B8D9]/10 blur-[80px]" />
       <div className="absolute bottom-1/4 -right-32 w-[500px] h-[500px] rounded-full bg-yellow-300/10 blur-[80px]" />
 
-      {/* Watermark */}
       <div className="absolute top-[8%] left-1/2 -translate-x-1/2 pointer-events-none select-none opacity-[0.04]">
         <div className="font-display text-[20vw] leading-none tracking-tightest text-slate-900 whitespace-nowrap">
           REVIEWS
         </div>
       </div>
 
-      {/* Decorative giant quote mark */}
       <div className="absolute top-10 right-10 pointer-events-none opacity-[0.06]">
         <Quote className="w-64 h-64 text-yellow-400" strokeWidth={1} />
       </div>
 
-      {/* Decorative stamp */}
       <div className="absolute top-32 right-4 lg:right-12 -rotate-12 hidden md:block pointer-events-none">
         <div className="bg-yellow-400 text-slate-900 border-2 border-slate-900 px-4 py-2 rounded-full font-bold text-xs tracking-[0.25em] uppercase shadow-[4px_4px_0_0_#00B8D9]">
           Verified ★
@@ -73,11 +69,11 @@ export default function Reviews() {
                     <Star key={i} className="w-3.5 h-3.5 fill-slate-900 text-slate-900" />
                   ))}
                 </div>
-                <div className="font-display text-3xl lg:text-4xl leading-none tracking-tightest text-slate-900">4.8</div>
+                <div className="font-display text-3xl lg:text-4xl leading-none tracking-tightest text-slate-900">5.0</div>
                 <div className="text-[9px] tracking-[0.2em] uppercase font-bold text-slate-900/70 mt-2">Google rating</div>
               </div>
               <div className="bg-[#00B8D9] border-2 border-slate-900 rounded-2xl p-4 shadow-[4px_4px_0_0_#FFD60A] rotate-1">
-                <div className="font-display text-3xl lg:text-4xl leading-none tracking-tightest text-white">100+</div>
+                <div className="font-display text-3xl lg:text-4xl leading-none tracking-tightest text-white">20+</div>
                 <div className="text-[9px] tracking-[0.2em] uppercase font-bold text-white/80 mt-2">Verified reviews</div>
               </div>
             </div>
@@ -131,7 +127,7 @@ export default function Reviews() {
 
             return (
               <motion.div
-                key={r.name}
+                key={r.name + i}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
@@ -175,7 +171,7 @@ export default function Reviews() {
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                   ))}
-                  <span className="text-[10px] tracking-[0.3em] uppercase font-bold text-slate-500 ml-1">4.8 · 100+ reviews</span>
+                  <span className="text-[10px] tracking-[0.3em] uppercase font-bold text-slate-500 ml-1">5.0 · 100+ reviews</span>
                 </div>
                 <div className="font-display text-3xl lg:text-4xl text-slate-900 leading-tight tracking-tight">
                   Join the list of happy customers.{' '}

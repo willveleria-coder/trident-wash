@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { Phone, Menu, X, ArrowRight, Sparkles } from 'lucide-react';
+import { Phone, Menu, X, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import HazardTape from './HazardTape';
 import { SITE } from '@/lib/data';
@@ -27,7 +27,6 @@ export default function Nav() {
 
   return (
     <>
-      {/* TOP HAZARD STRIP */}
       <div className="fixed top-0 inset-x-0 z-[60]">
         <HazardTape className="w-full h-1.5" />
       </div>
@@ -39,41 +38,32 @@ export default function Nav() {
       >
         <div className="max-w-[1440px] mx-auto px-3 lg:px-6">
           <div
-  className={`relative bg-white border-2 border-slate-900 rounded-full transition-all duration-300 w-full min-w-0 ${
-    scrolled
-      ? 'shadow-[4px_4px_0_0_#0F172A]'
-      : 'shadow-[6px_6px_0_0_#0F172A]'
-  }`}
->
+            className={`relative bg-white border-2 border-slate-900 rounded-full transition-all duration-300 w-full min-w-0 ${
+              scrolled
+                ? 'shadow-[4px_4px_0_0_#0F172A]'
+                : 'shadow-[6px_6px_0_0_#0F172A]'
+            }`}
+          >
             <div className="flex items-center justify-between pl-2 pr-2 lg:pl-4 lg:pr-4 py-2">
 
-              {/* LOGO */}
+              {/* LOGO — slightly larger */}
               <Link href="/" className="group flex items-center gap-3 shrink-0">
-                <div className="relative w-10 h-10 lg:w-14 lg:h-14 shrink-0">
-                  {/* Subtle cyan glow ring behind the circle */}
-                  <div className="absolute inset-0 rounded-full bg-[#00B8D9]/20 blur-md scale-110 pointer-events-none" />
-                  {/* Logo image — rounded circle with border */}
-                  <div className="absolute inset-0 rounded-full border-2 border-slate-900 overflow-hidden group-hover:rotate-6 transition-transform bg-white">
-                    <Image
-                      src="/logo.png"
-                      alt="Trident Pressure Washing logo"
-                      fill
-                      sizes="56px"
-                      className="object-contain p-1.5"
-                      priority
-                    />
-                  </div>
-                  {/* Sparkle dot */}
-                  <div className="absolute -top-1 -right-1 w-4 h-4 bg-[#00B8D9] rounded-full border-2 border-slate-900 flex items-center justify-center">
-                    <Sparkles className="w-2 h-2 text-white" strokeWidth={3} />
-                  </div>
+                <div className="relative w-16 h-16 lg:w-14 lg:h-14 shrink-0 ml-3">
+                  <Image
+                    src="/logo.png"
+                    alt="Trident Pressure Washing logo"
+                    fill
+                    sizes="80px"
+                    className="object-contain group-hover:scale-105 transition-transform"
+                    priority
+                  />
                 </div>
                 <div className="leading-none hidden sm:block">
-                  <div className="font-display text-lg lg:text-xl tracking-tight text-slate-900">
-                    Trident
+                  <div className="font-display text-lg lg:text-xl tracking-tight text-slate-900 uppercase">
+                    TRIDENT
                   </div>
                   <div className="text-[8px] lg:text-[9px] tracking-[0.3em] text-slate-900/60 uppercase mt-0.5 font-bold">
-                    Pressure · Washing
+                    PRESSURE · WASHING
                   </div>
                 </div>
               </Link>
@@ -103,7 +93,8 @@ export default function Nav() {
               <div className="hidden lg:flex items-center gap-3">
                 <a
                   href={`tel:${SITE.phoneRaw}`}
-                  className="flex items-center gap-2 px-3 py-2 rounded-full bg-yellow-400 border-2 border-slate-900 text-sm font-bold text-slate-900 hover:bg-yellow-300 transition-colors shadow-[2px_2px_0_0_#0F172A] hover:shadow-[0_0_0_0_#0F172A] hover:translate-x-0.5 hover:translate-y-0.5"
+                  className="flex items-center gap-2 px-3 py-2 rounded-full border-2 border-slate-900 text-sm font-bold text-white shadow-[0_0_15px_rgba(0,184,217,0.5)] hover:shadow-[0_0_25px_rgba(0,184,217,0.8)] transition-all"
+                  style={{ background: 'linear-gradient(135deg, #00B8D9 0%, #0EA5E9 100%)' }}
                 >
                   <Phone className="w-3.5 h-3.5" />
                   <span className="tabular">{SITE.phone}</span>
@@ -111,10 +102,7 @@ export default function Nav() {
 
                 <Link
                   href="/#free-quote"
-                  className="group inline-flex items-center gap-2 px-5 py-2.5 text-white font-bold text-sm rounded-full border-2 border-slate-900 shadow-[3px_3px_0_0_#0F172A] hover:shadow-[0_0_0_0_#0F172A] hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
-                  style={{
-                    background: 'linear-gradient(135deg, #00B8D9 0%, #0EA5E9 100%)',
-                  }}
+                  className="group inline-flex items-center gap-2 px-5 py-2.5 text-slate-900 font-bold text-sm rounded-full border-2 border-slate-900 bg-yellow-400 shadow-[0_0_15px_rgba(255,214,10,0.5)] hover:shadow-[0_0_25px_rgba(255,214,10,0.8)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
                 >
                   Free Quote
                   <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
@@ -162,7 +150,8 @@ export default function Nav() {
 
             <a
               href={`tel:${SITE.phoneRaw}`}
-              className="mt-4 flex items-center gap-2 px-6 py-4 rounded-2xl bg-yellow-400 border-2 border-slate-900 text-slate-900 font-bold shadow-[4px_4px_0_0_#0F172A]"
+              className="mt-4 flex items-center gap-2 px-6 py-4 rounded-2xl text-white font-bold shadow-[4px_4px_0_0_#0F172A] border-2 border-slate-900"
+              style={{ background: 'linear-gradient(135deg, #00B8D9 0%, #0EA5E9 100%)' }}
             >
               <Phone className="w-4 h-4" />
               {SITE.phone}
@@ -170,10 +159,7 @@ export default function Nav() {
             <Link
               href="/contact"
               onClick={() => setOpen(false)}
-              className="mt-2 flex items-center justify-center gap-2 px-6 py-4 text-white font-bold rounded-2xl border-2 border-slate-900 shadow-[4px_4px_0_0_#0F172A]"
-              style={{
-                background: 'linear-gradient(135deg, #00B8D9 0%, #0EA5E9 100%)',
-              }}
+              className="mt-2 flex items-center justify-center gap-2 px-6 py-4 text-slate-900 font-bold rounded-2xl border-2 border-slate-900 bg-yellow-400 shadow-[4px_4px_0_0_#0F172A]"
             >
               Free Quote
               <ArrowRight className="w-4 h-4" />

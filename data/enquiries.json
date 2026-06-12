@@ -1,0 +1,29 @@
+[
+  {
+    "id": "1778646557811",
+    "type": "filth",
+    "name": "111",
+    "phone": "111111",
+    "suburb": "1111",
+    "message": "Quote request via Filth-O-Meter:\n• Surface: Driveway / Concrete\n• Size: Large ~100 m²\n• Filth level: 5/5 (Archaeological)\n• Estimated range: $790–$1020",
+    "quoteDetails": {
+      "surface": "Driveway / Concrete",
+      "size": "Large ~100 m²",
+      "filthLabel": "Archaeological",
+      "filthLevel": 5,
+      "lo": 790,
+      "hi": 1020
+    },
+    "createdAt": "2026-05-13T04:29:17.811Z",
+    "read": true
+  },
+  {
+    "id": "1778645719142",
+    "name": "test",
+    "phone": "1111",
+    "suburb": "1111",
+    "message": "1111",
+    "createdAt": "2026-05-13T04:15:19.142Z",
+    "read": true
+  }
+]

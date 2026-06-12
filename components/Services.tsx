@@ -7,26 +7,34 @@ import HazardTape from './HazardTape';
 import { SERVICES } from '@/lib/data';
 import { SITE } from '@/lib/data';
 
-// Per-service square metre pricing
 const PRICING: Record<string, string> = {
   'pressure-washing': '$5/m²',
-  'soft-washing': '$7/m²',
-  'roof-cleaning': '$9/m²',
+  'soft-washing': '$POA',
+  'roof-cleaning': '$5/m²',
   'gutter-cleaning': '$8/lm',
-  'solar-cleaning': '$12/panel',
-  'window-cleaning': '$6/m²',
-  'sealcoating': '$10/m²',
+  'solar-cleaning': '$15/panel',
+  'window-cleaning': '$10/window',
+  'sealcoating': '$15/m²',
   'graffiti-removal': '$POA',
+};
+
+const SLUG_MAP: Record<string, string> = {
+  'pressure-washing': 'pressure-washing',
+  'soft-washing': 'house-soft-washing',
+  'roof-cleaning': 'roof-cleaning',
+  'gutter-cleaning': 'gutter-cleaning',
+  'solar-cleaning': 'solar-panel-cleaning',
+  'window-cleaning': 'exterior-windows',
+  'sealcoating': 'concrete-sealcoating',
+  'graffiti-removal': 'graffiti-removal',
 };
 
 export default function Services() {
   return (
     <section id="services" className="relative py-24 lg:py-32 bg-white overflow-hidden">
-      {/* Soft Miami glow accents */}
       <div className="absolute top-1/4 -left-32 w-[400px] h-[400px] rounded-full bg-[#00B8D9]/15 blur-[80px]" />
       <div className="absolute bottom-1/3 -right-32 w-[500px] h-[500px] rounded-full bg-yellow-300/20 blur-[80px]" />
 
-      {/* Massive watermark behind everything */}
       <div className="absolute top-[8%] left-1/2 -translate-x-1/2 pointer-events-none select-none opacity-[0.04]">
         <div className="font-display text-[22vw] leading-none tracking-tightest text-slate-900 whitespace-nowrap">
           SERVICES
@@ -34,7 +42,6 @@ export default function Services() {
       </div>
 
       <div className="relative max-w-[1440px] mx-auto px-6 lg:px-10">
-        {/* HEADER */}
         <div className="grid lg:grid-cols-12 gap-10 mb-12 lg:mb-16">
           <div className="lg:col-span-8">
             <motion.div
@@ -54,8 +61,7 @@ export default function Services() {
                 <span
                   className="bg-clip-text text-transparent"
                   style={{
-                    backgroundImage:
-                      'linear-gradient(90deg, #00B8D9 0%, #0EA5E9 100%)',
+                    backgroundImage: 'linear-gradient(90deg, #00B8D9 0%, #0EA5E9 100%)',
                   }}
                 >
                   we hit clean.
@@ -88,12 +94,10 @@ export default function Services() {
           </div>
         </div>
 
-        {/* HAZARD TAPE DIVIDER */}
         <div className="mb-10 lg:mb-14">
           <HazardTape className="w-full h-2" />
         </div>
 
-        {/* GRID */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
           {SERVICES.map((service, i) => (
             <ServiceCard
@@ -101,11 +105,11 @@ export default function Services() {
               service={service}
               index={i}
               price={PRICING[service.slug] || '$POA'}
+              href={`/services/${SLUG_MAP[service.slug] ?? service.slug}`}
             />
           ))}
         </div>
 
-        {/* PRICING NOTE — small text under grid */}
         <div className="mt-6 text-center">
           <span className="inline-flex items-center gap-2 text-xs text-slate-500 tracking-wide">
             <Sparkles className="w-3 h-3 text-yellow-500" />
@@ -113,9 +117,8 @@ export default function Services() {
           </span>
         </div>
 
-        {/* STRONGER CTA BANNER */}
+        {/* CTA BANNER */}
         <div className="mt-16 lg:mt-24 relative">
-          {/* Decorative rotated stamps */}
           <div className="absolute -top-6 -left-2 lg:-left-6 -rotate-12 z-10 hidden md:block">
             <div className="bg-yellow-400 border-2 border-slate-900 px-4 py-2 rounded-full font-bold text-xs tracking-[0.2em] uppercase shadow-[3px_3px_0_0_#0F172A]">
               ★ Same-day quote
@@ -128,7 +131,6 @@ export default function Services() {
           </div>
 
           <div className="relative bg-slate-900 rounded-3xl border-2 border-slate-900 shadow-[10px_10px_0_0_#FFD60A] overflow-hidden">
-            {/* Decorative hazard inside banner */}
             <div className="absolute top-0 inset-x-0">
               <HazardTape className="w-full h-1.5" />
             </div>
@@ -137,7 +139,6 @@ export default function Services() {
             </div>
 
             <div className="p-8 lg:p-12 grid lg:grid-cols-12 gap-8 items-center">
-              {/* LEFT — copy */}
               <div className="lg:col-span-7">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="flex">
@@ -146,7 +147,7 @@ export default function Services() {
                     ))}
                   </div>
                   <span className="text-yellow-400 text-[10px] tracking-[0.3em] uppercase font-bold">
-                    50+ five-star jobs
+                    5-star jobs
                   </span>
                 </div>
                 <div className="font-display text-4xl lg:text-6xl tracking-tightest text-white leading-[0.92]">
@@ -163,7 +164,6 @@ export default function Services() {
                 </p>
               </div>
 
-              {/* RIGHT — buttons */}
               <div className="lg:col-span-5 flex flex-col gap-3">
                 <Link
                   href="/contact"
@@ -197,55 +197,40 @@ export default function Services() {
   );
 }
 
-/* ──────────────────────────────────────────────────────────
-   SERVICE CARD — with price chip
-   ────────────────────────────────────────────────────────── */
 function ServiceCard({
-  service,
-  index,
-  price,
+  service, index, price, href,
 }: {
-  service: any;
-  index: number;
-  price: string;
+  service: any; index: number; price: string; href: string;
 }) {
   const variants = [
     {
-      wrapper:
-        'bg-white border-2 border-slate-900 shadow-[6px_6px_0_0_#00B8D9] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0_0_#00B8D9]',
+      wrapper: 'bg-white border-2 border-slate-900 shadow-[6px_6px_0_0_#00B8D9] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0_0_#00B8D9]',
       number: 'bg-[#00B8D9] text-white border-slate-900',
-      title: 'text-slate-900',
-      short: 'text-slate-600',
+      title: 'text-slate-900', short: 'text-slate-600',
       arrow: 'text-slate-900 group-hover:bg-yellow-400',
       priceChip: 'bg-yellow-400 text-slate-900 border-slate-900',
       rotation: '-rotate-1',
     },
     {
-      wrapper:
-        'bg-[#00B8D9] border-2 border-slate-900 shadow-[6px_6px_0_0_#FFD60A] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0_0_#FFD60A]',
+      wrapper: 'bg-[#00B8D9] border-2 border-slate-900 shadow-[6px_6px_0_0_#FFD60A] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0_0_#FFD60A]',
       number: 'bg-yellow-400 text-slate-900 border-slate-900',
-      title: 'text-white',
-      short: 'text-white/85',
+      title: 'text-white', short: 'text-white/85',
       arrow: 'text-white group-hover:bg-yellow-400 group-hover:text-slate-900',
       priceChip: 'bg-white text-slate-900 border-slate-900',
       rotation: 'rotate-1',
     },
     {
-      wrapper:
-        'bg-yellow-400 border-2 border-slate-900 shadow-[6px_6px_0_0_#0F172A] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0_0_#0F172A]',
+      wrapper: 'bg-yellow-400 border-2 border-slate-900 shadow-[6px_6px_0_0_#0F172A] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0_0_#0F172A]',
       number: 'bg-slate-900 text-yellow-400 border-slate-900',
-      title: 'text-slate-900',
-      short: 'text-slate-900/75',
+      title: 'text-slate-900', short: 'text-slate-900/75',
       arrow: 'text-slate-900 group-hover:bg-[#00B8D9] group-hover:text-white',
       priceChip: 'bg-slate-900 text-yellow-400 border-slate-900',
       rotation: '-rotate-1',
     },
     {
-      wrapper:
-        'bg-white border-2 border-slate-900 shadow-[6px_6px_0_0_#0F172A] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0_0_#0F172A]',
+      wrapper: 'bg-white border-2 border-slate-900 shadow-[6px_6px_0_0_#0F172A] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0_0_#0F172A]',
       number: 'bg-yellow-400 text-slate-900 border-slate-900',
-      title: 'text-slate-900',
-      short: 'text-slate-600',
+      title: 'text-slate-900', short: 'text-slate-600',
       arrow: 'text-slate-900 group-hover:bg-[#00B8D9] group-hover:text-white',
       priceChip: 'bg-[#00B8D9] text-white border-slate-900',
       rotation: 'rotate-1',
@@ -262,50 +247,36 @@ function ServiceCard({
       transition={{ duration: 0.5, delay: (index % 4) * 0.08 }}
       className={`${v.rotation} transition-transform`}
     >
-      <div
-  className={`group relative block rounded-3xl p-6 lg:p-7 h-full min-h-[300px] transition-all duration-200 ${v.wrapper}`}
->
-        {/* Top: number badge + arrow */}
+      <Link
+        href={href}
+        className={`group relative block rounded-3xl p-6 lg:p-7 h-full min-h-[300px] transition-all duration-200 ${v.wrapper}`}
+      >
         <div className="flex items-start justify-between mb-6">
-          <div
-            className={`w-12 h-12 rounded-full flex items-center justify-center border-2 font-display text-base font-bold ${v.number}`}
-          >
+          <div className={`w-12 h-12 rounded-full flex items-center justify-center border-2 font-display text-base font-bold ${v.number}`}>
             {service.number}
           </div>
-          <div
-            className={`w-10 h-10 rounded-full flex items-center justify-center transition-all group-hover:rotate-45 border-2 border-slate-900 ${v.arrow}`}
-          >
+          <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all group-hover:rotate-45 border-2 border-slate-900 ${v.arrow}`}>
             <ArrowUpRight className="w-4 h-4" />
           </div>
         </div>
 
-        {/* Body */}
         <div className="space-y-2 mb-4">
-          <h3
-            className={`font-display text-2xl lg:text-3xl leading-[1] tracking-tight ${v.title}`}
-          >
+          <h3 className={`font-display text-2xl lg:text-3xl leading-[1] tracking-tight ${v.title}`}>
             {service.title}
           </h3>
           <p className={`text-sm leading-relaxed ${v.short}`}>{service.short}</p>
         </div>
 
-        {/* PRICE CHIP — bottom of card */}
         <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between gap-2">
-          <div
-            className={`inline-flex items-center gap-1 px-3 py-1.5 rounded-full border-2 font-bold text-sm tabular shadow-[2px_2px_0_0_rgba(15,23,42,0.5)] ${v.priceChip}`}
-          >
-            <span className="text-[9px] tracking-[0.2em] uppercase opacity-70 font-bold">
-              From
-            </span>
+          <div className={`inline-flex items-center gap-1 px-3 py-1.5 rounded-full border-2 font-bold text-sm tabular shadow-[2px_2px_0_0_rgba(15,23,42,0.5)] ${v.priceChip}`}>
+            <span className="text-[9px] tracking-[0.2em] uppercase opacity-70 font-bold">From</span>
             <span>{price}</span>
           </div>
-          <div className={`text-[9px] tracking-[0.2em] uppercase font-bold ${
-            index % 4 === 1 ? 'text-white/70' : 'text-slate-500'
-          }`}>
+          <div className={`text-[9px] tracking-[0.2em] uppercase font-bold ${index % 4 === 1 ? 'text-white/70' : 'text-slate-500'}`}>
             See more →
           </div>
         </div>
-      </div>
+      </Link>
     </motion.div>
   );
 }

@@ -7,62 +7,13 @@ import { ArrowLeft, ArrowRight, MapPin, Sparkles, Star, Calendar } from 'lucide-
 import HazardTape from './HazardTape';
 
 const TRANSFORMATIONS = [
-  {
-    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
-    suburb: 'Brighton',
-    service: 'Driveway + sealcoating',
-    date: 'This week',
-    variant: 'yellow',
-    rotation: '-rotate-2',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1564540583246-934409427776?w=800&q=80',
-    suburb: 'Hawthorn',
-    service: 'Roof soft wash',
-    date: 'Last week',
-    variant: 'white',
-    rotation: 'rotate-1',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
-    suburb: 'Glen Waverley',
-    service: 'House exterior',
-    date: 'Last week',
-    variant: 'cyan',
-    rotation: '-rotate-1',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=800&q=80',
-    suburb: 'Bentleigh',
-    service: 'Full property',
-    date: '2 weeks ago',
-    variant: 'white',
-    rotation: 'rotate-2',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1592595896616-c37162298647?w=800&q=80',
-    suburb: 'Doncaster',
-    service: 'Patio + concrete',
-    date: '2 weeks ago',
-    variant: 'yellow',
-    rotation: '-rotate-1',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1416331108676-a22ccb276e35?w=800&q=80',
-    suburb: 'St Kilda',
-    service: 'Render soft wash',
-    date: '3 weeks ago',
-    variant: 'white',
-    rotation: 'rotate-1',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1574359411659-15573a27fd0c?w=800&q=80',
-    suburb: 'Box Hill',
-    service: 'Solar panel array',
-    date: '3 weeks ago',
-    variant: 'cyan',
-    rotation: '-rotate-2',
-  },
+  { img: '/01.png', suburb: 'Brighton', service: 'Driveway + sealcoating', date: 'Trident', variant: 'yellow', rotation: '-rotate-2' },
+  { img: '/02.png', suburb: 'Hawthorn', service: 'Roof soft wash', date: 'Trident', variant: 'white', rotation: 'rotate-1' },
+  { img: '/03.png', suburb: 'Glen Waverley', service: 'House exterior', date: 'Trident', variant: 'cyan', rotation: '-rotate-1' },
+  { img: '/04.png', suburb: 'Bentleigh', service: 'Full property', date: 'Trident', variant: 'white', rotation: 'rotate-2' },
+  { img: '/05.png', suburb: 'Doncaster', service: 'Patio + concrete', date: 'Trident', variant: 'yellow', rotation: '-rotate-1' },
+  { img: '/06.png', suburb: 'St Kilda', service: 'Render soft wash', date: 'Trident', variant: 'white', rotation: 'rotate-1' },
+  { img: '/07.png', suburb: 'Box Hill', service: 'Solar panel array', date: 'Trident', variant: 'cyan', rotation: '-rotate-2' },
 ];
 
 export default function Transformations() {
@@ -116,7 +67,7 @@ export default function Transformations() {
                       'linear-gradient(90deg, #00B8D9 0%, #0EA5E9 100%)',
                   }}
                 >
-                  Sunny's truck.
+                  Tridents truck.
                 </span>
                 <svg
                   className="absolute -bottom-2 left-0 w-full"
@@ -277,9 +228,6 @@ function TransformationCard({ item, index }: { item: any; index: number }) {
           </div>
           <div className={`font-display text-2xl lg:text-2xl leading-tight tracking-tight ${variants.title}`}>
             {item.service}
-          </div>
-          <div className={`mt-1.5 text-[10px] tracking-[0.2em] uppercase font-bold ${variants.meta}`}>
-            Job #{String(1247 + index).padStart(4, '0')} · Completed
           </div>
         </div>
       </div>

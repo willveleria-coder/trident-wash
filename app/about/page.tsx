@@ -26,7 +26,7 @@ const VALUES = [
   {
     icon: Shield,
     title: 'Fully insured, properly trained',
-    body: 'Public liability up to $20m. Police-checked operators. Insurance certificates available on request.',
+    body: 'Public Liability Insurance. Police-checked operators. Insurance certificates available on request.',
     style: {
       wrapper: 'bg-yellow-400 border-2 border-slate-900 shadow-[6px_6px_0_0_#0F172A] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0_0_#0F172A]',
       icon: 'bg-slate-900 text-yellow-400',
@@ -49,8 +49,8 @@ const VALUES = [
   },
   {
     icon: Heart,
-    title: 'Family business mentality',
-    body: 'Sunny answers his own phone. The crew you meet is the crew that does the work. No subcontracting, ever.',
+    title: 'Real people. Proper service.',
+    body: 'From the first call to the final rinse, we keep things straightforward, professional, and accountable.',
     style: {
       wrapper: 'bg-slate-900 border-2 border-slate-900 shadow-[6px_6px_0_0_#FFD60A] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0_0_#FFD60A]',
       icon: 'bg-yellow-400 text-slate-900',
@@ -68,26 +68,16 @@ export default function AboutPage() {
 
       {/* ── HERO ─────────────────────────────────────────────── */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-white overflow-hidden">
-        {/* Glow blobs */}
         <div className="absolute top-0 -left-40 w-[600px] h-[600px] rounded-full bg-[#00B8D9]/10 blur-[100px] pointer-events-none" />
         <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-yellow-300/20 blur-[100px] pointer-events-none" />
 
-        {/* Watermark */}
         <div className="absolute top-[15%] left-1/2 -translate-x-1/2 pointer-events-none select-none opacity-[0.04]">
           <div className="font-display text-[22vw] leading-none tracking-tightest text-slate-900 whitespace-nowrap">
             ABOUT
           </div>
         </div>
 
-        {/* Decorative stamp */}
-        <div className="absolute top-36 right-4 lg:right-12 -rotate-6 hidden md:block pointer-events-none">
-          <div className="bg-slate-900 text-yellow-400 border-2 border-slate-900 px-4 py-2 rounded-full font-bold text-xs tracking-[0.25em] uppercase shadow-[4px_4px_0_0_#FFD60A]">
-            Est. 2022 ★
-          </div>
-        </div>
-
         <div className="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-10">
-          {/* Label pill */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -98,14 +88,13 @@ export default function AboutPage() {
             The story
           </motion.div>
 
-          {/* Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
             className="font-display leading-[0.84] tracking-tightest text-slate-900 max-w-5xl"
           >
-            <span className="block text-[13vw] lg:text-[8.5vw]">One man,</span>
+            <span className="block text-[13vw] lg:text-[8.5vw]">Built on hard work,</span>
             <span className="block text-[11vw] lg:text-[7vw] italic relative inline-block mt-1">
               <span
                 className="bg-clip-text text-transparent"
@@ -113,11 +102,11 @@ export default function AboutPage() {
                   backgroundImage: 'linear-gradient(90deg, #00B8D9 0%, #0EA5E9 50%, #00B8D9 100%)',
                 }}
               >
-                a machine,
+                a standard,
               </span>
             </span>
             <span className="block text-[13vw] lg:text-[8.5vw] mt-1 relative inline-block">
-              and a standard.
+              and results.
               <svg
                 className="absolute -bottom-2 left-0 w-[60%]"
                 viewBox="0 0 400 12"
@@ -134,19 +123,17 @@ export default function AboutPage() {
             </span>
           </motion.h1>
 
-          {/* Sub copy */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mt-10 lg:mt-14 text-slate-600 text-lg lg:text-xl leading-relaxed font-medium max-w-xl border-l-4 border-[#00B8D9] pl-5"
           >
-            Sunny started Trident in 2022 with a simple idea: do the work properly, photograph everything, and stand behind it.
+            Built on trust, understanding and professionalism — you're not another number to us as a local business.
           </motion.p>
         </div>
       </section>
 
-      {/* ── HAZARD TAPE ───────────────────────────────────────── */}
       <HazardTape className="w-full h-3" />
 
       {/* ── STORY SECTION ─────────────────────────────────────── */}
@@ -157,7 +144,6 @@ export default function AboutPage() {
         <div className="relative max-w-[1440px] mx-auto px-6 lg:px-10">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
 
-            {/* LEFT — image */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -165,26 +151,23 @@ export default function AboutPage() {
               transition={{ duration: 0.7 }}
               className="lg:col-span-5 relative"
             >
-              {/* Yellow offset */}
               <div
                 aria-hidden
                 className="absolute -top-3 -left-3 w-full h-full bg-yellow-400 rounded-3xl border-2 border-slate-900"
               />
               <div className="relative rounded-3xl overflow-hidden border-2 border-slate-900 shadow-[8px_8px_0_0_#00B8D9] aspect-[4/3]">
                 <img
-                  src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80"
-                  alt="Trident pressure washing operator at work"
+                  src="/about.png"
+                  alt="Trident Pressure Washing operator at work"
                   className="w-full h-full object-cover"
                 />
-                {/* Stat badge */}
                 <div className="absolute bottom-4 left-4 bg-slate-900 border-2 border-slate-900 rounded-2xl px-4 py-3 shadow-[3px_3px_0_0_#FFD60A]">
-                  <div className="font-display text-2xl leading-none text-yellow-400">2022</div>
-                  <div className="text-[9px] tracking-[0.2em] uppercase font-bold text-white/70 mt-1">Founded in Melbourne</div>
+                  <div className="font-display text-2xl leading-none text-yellow-400">Melbourne</div>
+                  <div className="text-[9px] tracking-[0.2em] uppercase font-bold text-white/70 mt-1">Locally owned & operated</div>
                 </div>
               </div>
             </motion.div>
 
-            {/* RIGHT — copy */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -205,7 +188,7 @@ export default function AboutPage() {
                     className="bg-clip-text text-transparent"
                     style={{ backgroundImage: 'linear-gradient(90deg, #00B8D9 0%, #0EA5E9 100%)' }}
                   >
-                    is rushed.
+                    looks clean.
                   </span>
                   <svg
                     className="absolute -bottom-1 left-0 w-full"
@@ -225,20 +208,19 @@ export default function AboutPage() {
 
               <div className="space-y-5 text-slate-600 text-base lg:text-lg leading-relaxed font-medium border-l-4 border-[#00B8D9] pl-5">
                 <p>
-                  We see it on every job. Etched concrete. Forced water under render. Plants killed by overspray. Half-cleaned roofs that stripe within a year.
+                  But long-term results come down to the method, the equipment, and the care taken during the job.
                 </p>
                 <p>
-                  Trident exists because Sunny got tired of fixing other people's shortcuts. He'd take a job, and the surface would already be damaged from the last "professional" wash.
+                  At Trident, we focus on doing exterior cleaning properly — from the right nozzle for each surface, to biodegradable detergents, to photo documentation on every job.
                 </p>
                 <p>
-                  So he set up his own thing. Bought the right gear — twin-lance machines, surface cleaners, soft-wash injectors, pure-water poles. Got insured properly. Got trained on every method.
+                  We set up with the right gear — twin-lance machines, surface cleaners, soft-wash injectors, pure-water poles. Fully insured. Trained on every method.
                 </p>
                 <p className="font-bold text-slate-900">
-                  Three years later, most of the work comes from referrals. That's the only metric that matters.
+                  Most of our work comes from referrals. That's the only metric that matters.
                 </p>
               </div>
 
-              {/* CTA row */}
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
                 <Link
                   href="/contact"
@@ -260,7 +242,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── HAZARD TAPE ───────────────────────────────────────── */}
       <HazardTape className="w-full h-3" />
 
       {/* ── VALUES GRID ───────────────────────────────────────── */}
@@ -268,7 +249,6 @@ export default function AboutPage() {
         <div className="absolute top-1/4 -left-32 w-[500px] h-[500px] rounded-full bg-[#00B8D9]/10 blur-[80px] pointer-events-none" />
         <div className="absolute bottom-1/4 -right-32 w-[500px] h-[500px] rounded-full bg-yellow-300/15 blur-[80px] pointer-events-none" />
 
-        {/* Watermark */}
         <div className="absolute top-[8%] left-1/2 -translate-x-1/2 pointer-events-none select-none opacity-[0.04]">
           <div className="font-display text-[18vw] leading-none tracking-tightest text-slate-900 whitespace-nowrap">
             VALUES
@@ -276,7 +256,6 @@ export default function AboutPage() {
         </div>
 
         <div className="relative max-w-[1440px] mx-auto px-6 lg:px-10">
-          {/* Header */}
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-12 lg:mb-16">
             <div className="lg:col-span-7">
               <motion.div
@@ -324,12 +303,10 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Hazard tape divider */}
           <div className="mb-10 lg:mb-14">
             <HazardTape className="w-full h-2" />
           </div>
 
-          {/* Value cards */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
             {VALUES.map((v, i) => {
               const Icon = v.icon;
@@ -345,22 +322,18 @@ export default function AboutPage() {
                   <div
                     className={`relative rounded-3xl p-6 lg:p-8 min-h-[260px] flex flex-col transition-all duration-200 cursor-default ${v.style.wrapper}`}
                   >
-                    {/* Icon */}
                     <div className={`w-12 h-12 rounded-full border-2 border-slate-900 flex items-center justify-center mb-6 ${v.style.icon}`}>
                       <Icon className="w-5 h-5" />
                     </div>
 
-                    {/* Step label */}
                     <div className="font-mono text-[9px] tracking-[0.3em] uppercase text-current opacity-40 mb-2">
                       {String(i + 1).padStart(2, '0')} of 04
                     </div>
 
-                    {/* Title */}
                     <h3 className={`font-display text-2xl lg:text-3xl leading-tight tracking-tight mb-3 ${v.style.title}`}>
                       {v.title}
                     </h3>
 
-                    {/* Body */}
                     <p className={`text-sm leading-relaxed mt-auto ${v.style.body}`}>
                       {v.body}
                     </p>
@@ -372,10 +345,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── HAZARD TAPE ───────────────────────────────────────── */}
       <HazardTape className="w-full h-3" />
 
-      {/* ── STATS ─────────────────────────────────────────────── */}
       <Stats />
 
       <CTA />

@@ -23,18 +23,24 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: 'Trident — Premium Pressure Washing in Melbourne',
   description:
-    'Melbourne\'s most thorough exterior cleaning. Pressure washing, soft washing, roof cleaning, gutters, solar, sealcoating. Free quotes, fully insured.',
+    "Melbourne's most thorough exterior cleaning. Pressure washing, soft washing, roof cleaning, gutters, solar, sealcoating. Free quotes, fully insured.",
   metadataBase: new URL('https://tridentwash.com.au'),
   icons: {
     icon: '/logo.png',
-    apple: '/logo.png',
+    apple: '/icon-192.png',
     shortcut: '/logo.png',
   },
   openGraph: {
     title: 'Trident — Premium Pressure Washing in Melbourne',
     description:
-      'Melbourne\'s most thorough exterior cleaning. Free quotes, fully insured, 50+ five-star reviews.',
+      "Melbourne's most thorough exterior cleaning. Free quotes, fully insured, 50+ five-star reviews.",
     type: 'website',
+  },
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    title: 'Trident Admin',
+    statusBarStyle: 'black-translucent',
   },
 };
 
@@ -43,6 +49,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
+  themeColor: '#000000',
 };
 
 export default function RootLayout({
@@ -52,9 +59,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-      </head>
       <body className="grain font-sans antialiased bg-ink-900 text-cream-50">
         {children}
       </body>

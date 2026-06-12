@@ -64,7 +64,7 @@ export default function Footer() {
             </Link>
             <p className="text-slate-500 text-sm leading-relaxed max-w-xs mb-6">
               Premium exterior cleaning for Melbourne homes and commercial
-              properties. Owner-operated, fully insured, obsessed with detail.
+              properties. Fully insured, obsessed with detail.
             </p>
 
             <div className="flex gap-3 mb-6">
@@ -105,7 +105,7 @@ export default function Footer() {
                 ))}
               </div>
               <span className="text-xs text-slate-900 font-bold tracking-wide">
-                4.8 · 100+ Google reviews
+                5.0 · 100+ Google reviews
               </span>
             </div>
           </div>
@@ -117,11 +117,16 @@ export default function Footer() {
             </div>
             <ul className="space-y-2.5">
               {SERVICES.map((s) => (
-  <li key={s.slug} className="flex items-center gap-1.5 text-slate-600 text-sm font-medium">
-    <span className="w-1.5 h-1.5 rounded-full bg-[#00B8D9] shrink-0" />
-    {s.title}
-  </li>
-))}
+                <li key={s.slug}>
+                  <Link
+                    href={`/services/${s.slug}`}
+                    className="group flex items-center gap-1.5 text-slate-600 hover:text-slate-900 transition-colors text-sm font-medium"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#00B8D9] group-hover:bg-yellow-400 transition-colors shrink-0" />
+                    {s.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -132,7 +137,6 @@ export default function Footer() {
             </div>
             <ul className="space-y-2.5">
               {[
-                // Dedicated pages
                 { label: 'About us',      href: '/about' },
                 { label: 'Gallery',       href: '/gallery' },
                 { label: 'Blog',          href: '/blog' },
@@ -140,7 +144,6 @@ export default function Footer() {
                 { label: 'Free quote',    href: '/#filthometer' },
                 { label: 'Privacy policy', href: '/privacy' },
                 { label: 'Terms',         href: '/terms' },
-                // Homepage sections — scroll to anchor
                 { label: 'Reviews',       href: '/#reviews' },
                 { label: 'Our process',   href: '/#process' },
                 { label: 'FAQ',           href: '/#faq' },
@@ -204,7 +207,7 @@ export default function Footer() {
               {[
                 'Melbourne CBD', 'Hawthorn', 'Camberwell', 'Brighton',
                 'Bayside', 'Glen Waverley', 'Mornington', 'Frankston',
-                'Doncaster', 'Balwyn', 'Kew', 'South Yarra',
+                'Doncaster', 'Balwyn', 'Kew', 'Toorak',
               ].map((area) => (
                 <span
                   key={area}
@@ -224,7 +227,7 @@ export default function Footer() {
           </div>
           <div className="flex items-center gap-2 bg-slate-900 text-white px-4 py-2 rounded-full font-bold text-[10px] tracking-wide">
             <span className="w-2 h-2 rounded-full bg-[#00B8D9] animate-pulse" />
-            Currently booking — 5 day response window
+            Contact Us Today
           </div>
         </div>
       </div>

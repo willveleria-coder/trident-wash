@@ -11,19 +11,19 @@ import BeforeAfterSlider from '@/components/BeforeAfterSlider';
 
 const FEATURED = [
   {
-    beforeSrc: 'https://images.unsplash.com/photo-1545486332-9e0999c535b2?w=1200&q=80',
-    afterSrc: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80',
-    title: 'Brighton driveway',
-    desc: 'Three years of moss and oil, restored in a single afternoon.',
-    variant: 'yellow' as const,
-  },
+    beforeSrc: '/3.png',
+  afterSrc: '/4.png',
+  title: 'Before & After',
+  desc: 'A complete transformation — see the difference for yourself.',
+  variant: 'yellow' as const,
+},
   {
-    beforeSrc: 'https://images.unsplash.com/photo-1564540583246-934409427776?w=1200&q=80',
-    afterSrc: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80',
-    title: 'Hawthorn roof',
-    desc: 'Soft-wash treatment killed lichen at the root. No high pressure, no broken tiles.',
-    variant: 'cyan' as const,
-  },
+  beforeSrc: '/1.png',
+  afterSrc: '/2.png',
+  title: 'Before & After',
+  desc: 'A complete transformation — see the difference for yourself.',
+  variant: 'yellow' as const,
+},
 ];
 
 export default function GalleryPage() {
@@ -112,7 +112,7 @@ export default function GalleryPage() {
             className="mt-10 flex flex-wrap justify-center gap-3"
           >
             <div className="bg-yellow-400 border-2 border-slate-900 rounded-2xl px-5 py-3 shadow-[4px_4px_0_0_#0F172A] -rotate-1">
-              <div className="font-display text-2xl leading-none text-slate-900">100+</div>
+              <div className="font-display text-2xl leading-none text-slate-900">50+</div>
               <div className="text-[9px] tracking-[0.2em] uppercase font-bold text-slate-900/70 mt-1">
                 Five-star jobs
               </div>
@@ -268,8 +268,7 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      {/* ── HAZARD TAPE ── */}
-      <HazardTape className="w-full h-2" />
+  
 
       {/* ── TRANSFORMATIONS SCROLL SECTION ── */}
       <Transformations />

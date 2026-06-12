@@ -1,14 +1,48 @@
 'use client';
 
+import { useState } from 'react';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import FilthOMeter from '@/components/FilthOMeter';
 import HazardTape from '@/components/HazardTape';
 import { motion } from 'framer-motion';
 import { SITE } from '@/lib/data';
-import { Phone, Mail, MapPin, Clock, ArrowRight, Sparkles, Send } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, ArrowRight, Sparkles, Send, CheckCircle, AlertCircle } from 'lucide-react';
 
 export default function ContactPage() {
+  const [form, setForm] = useState({ name: '', phone: '', suburb: '', message: '' });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
+
+  const update = (field: string, value: string) =>
+    setForm((prev) => ({ ...prev, [field]: value }));
+
+  const handleSubmit = async () => {
+    if (!form.name || !form.phone || !form.message) {
+      setErrorMsg('Please fill in your name, phone and message.');
+      setStatus('error');
+      return;
+    }
+
+    setStatus('loading');
+    setErrorMsg('');
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+
+      if (!res.ok) throw new Error('Failed');
+      setStatus('success');
+      setForm({ name: '', phone: '', suburb: '', message: '' });
+    } catch {
+      setErrorMsg('Something went wrong. Please try calling us directly.');
+      setStatus('error');
+    }
+  };
+
   return (
     <main className="w-full overflow-x-hidden">
       <Nav />
@@ -18,7 +52,6 @@ export default function ContactPage() {
         <div className="absolute top-0 -left-40 w-[600px] h-[600px] rounded-full bg-[#00B8D9]/10 blur-[100px] pointer-events-none" />
         <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-yellow-300/20 blur-[100px] pointer-events-none" />
 
-        {/* Watermark — overflow-hidden so it never causes scroll */}
         <div className="absolute top-[15%] left-0 right-0 overflow-hidden pointer-events-none select-none opacity-[0.04] flex justify-center">
           <div className="font-display text-[22vw] leading-none tracking-tightest text-slate-900 whitespace-nowrap">
             CONTACT
@@ -54,7 +87,7 @@ export default function ContactPage() {
                 className="bg-clip-text text-transparent"
                 style={{ backgroundImage: 'linear-gradient(90deg, #00B8D9 0%, #0EA5E9 50%, #00B8D9 100%)' }}
               >
-                We don't bite.
+                We don&apos;t bite.
               </span>
               <svg className="absolute -bottom-2 left-0 w-[80%]" viewBox="0 0 400 12" preserveAspectRatio="none" fill="none">
                 <path d="M2 8 Q 100 2, 200 6 T 398 5" stroke="#FFD60A" strokeWidth="5" strokeLinecap="round" />
@@ -68,7 +101,7 @@ export default function ContactPage() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mt-10 lg:mt-14 text-slate-600 text-lg lg:text-xl leading-relaxed font-medium max-w-xl border-l-4 border-[#00B8D9] pl-5"
           >
-            Send a message or give us a call — we'll get back to you within a few hours and have a quote ready same day.
+            Send a message or give us a call — we&apos;ll get back to you within a few hours and have a quote ready same day.
           </motion.p>
         </div>
       </section>
@@ -76,7 +109,6 @@ export default function ContactPage() {
       <HazardTape className="w-full h-3" />
 
       {/* ── CONTACT DETAILS + FORM ───────────────────────────── */}
-      {/* overflow-hidden on section AND the inner container to guarantee nothing bleeds */}
       <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
         <div className="absolute top-0 -right-32 w-[500px] h-[500px] rounded-full bg-yellow-300/15 blur-[80px] pointer-events-none" />
         <div className="absolute bottom-0 -left-32 w-[400px] h-[400px] rounded-full bg-[#00B8D9]/10 blur-[80px] pointer-events-none" />
@@ -113,7 +145,6 @@ export default function ContactPage() {
                 </span>
               </h2>
 
-              {/* Contact rows — each one is overflow-hidden and constrained */}
               <div className="space-y-3 mb-8 w-full">
                 <ContactRow icon={<Phone className="w-4 h-4" />} label="Call or text" value={SITE.phone} href={`tel:${SITE.phoneRaw}`} />
                 <ContactRow icon={<Mail className="w-4 h-4" />} label="Email" value={SITE.email} href={`mailto:${SITE.email}`} />
@@ -141,7 +172,6 @@ export default function ContactPage() {
               transition={{ duration: 0.7, delay: 0.1 }}
               className="lg:col-span-6 lg:col-start-7 min-w-0"
             >
-              {/* Yellow offset only on lg, no bleed on mobile */}
               <div className="relative">
                 <div
                   aria-hidden
@@ -155,72 +185,115 @@ export default function ContactPage() {
                       ◆ Quote request
                     </div>
 
-                    <div>
-                      <label className="text-[10px] tracking-[0.3em] uppercase text-white/50 font-bold block mb-2">
-                        Your name
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="Jane Smith"
-                        className="w-full bg-white/5 border-2 border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-yellow-400 transition-colors placeholder:text-white/20 font-medium"
-                      />
-                    </div>
+                    {/* SUCCESS STATE */}
+                    {status === 'success' ? (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="py-12 flex flex-col items-center text-center gap-4"
+                      >
+                        <div className="w-16 h-16 rounded-full bg-yellow-400 border-2 border-slate-900 flex items-center justify-center">
+                          <CheckCircle className="w-8 h-8 text-slate-900" strokeWidth={2.5} />
+                        </div>
+                        <div className="font-display text-3xl text-white leading-tight">
+                          Request sent!
+                        </div>
+                        <p className="text-white/60 text-sm max-w-xs">
+                          We&apos;ll be in touch within a few hours with your quote. Talk soon! 👊
+                        </p>
+                        <button
+                          onClick={() => setStatus('idle')}
+                          className="mt-2 text-yellow-400 text-xs font-bold tracking-widest uppercase underline underline-offset-4"
+                        >
+                          Send another
+                        </button>
+                      </motion.div>
+                    ) : (
+                      <>
+                        <div>
+                          <label className="text-[10px] tracking-[0.3em] uppercase text-white/50 font-bold block mb-2">
+                            Your name *
+                          </label>
+                          <input
+                            type="text"
+                            placeholder="Jane Smith"
+                            value={form.name}
+                            onChange={(e) => update('name', e.target.value)}
+                            className="w-full bg-white/5 border-2 border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-yellow-400 transition-colors placeholder:text-white/20 font-medium"
+                          />
+                        </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div>
-                        <label className="text-[10px] tracking-[0.3em] uppercase text-white/50 font-bold block mb-2">
-                          Phone
-                        </label>
-                        <input
-                          type="tel"
-                          placeholder="0400 000 000"
-                          className="w-full bg-white/5 border-2 border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-yellow-400 transition-colors placeholder:text-white/20 font-medium"
-                        />
-                      </div>
-                      <div>
-                        <label className="text-[10px] tracking-[0.3em] uppercase text-white/50 font-bold block mb-2">
-                          Suburb
-                        </label>
-                        <input
-                          type="text"
-                          placeholder="Brighton"
-                          className="w-full bg-white/5 border-2 border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-yellow-400 transition-colors placeholder:text-white/20 font-medium"
-                        />
-                      </div>
-                    </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div>
+                            <label className="text-[10px] tracking-[0.3em] uppercase text-white/50 font-bold block mb-2">
+                              Phone *
+                            </label>
+                            <input
+                              type="tel"
+                              placeholder="0400 000 000"
+                              value={form.phone}
+                              onChange={(e) => update('phone', e.target.value)}
+                              className="w-full bg-white/5 border-2 border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-yellow-400 transition-colors placeholder:text-white/20 font-medium"
+                            />
+                          </div>
+                          <div>
+                            <label className="text-[10px] tracking-[0.3em] uppercase text-white/50 font-bold block mb-2">
+                              Suburb
+                            </label>
+                            <input
+                              type="text"
+                              placeholder="Brighton"
+                              value={form.suburb}
+                              onChange={(e) => update('suburb', e.target.value)}
+                              className="w-full bg-white/5 border-2 border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-yellow-400 transition-colors placeholder:text-white/20 font-medium"
+                            />
+                          </div>
+                        </div>
 
-                    <div>
-                      <label className="text-[10px] tracking-[0.3em] uppercase text-white/50 font-bold block mb-2">
-                        What needs cleaning?
-                      </label>
-                      <textarea
-                        rows={5}
-                        placeholder="Driveway, house, roof… give us the details"
-                        className="w-full bg-white/5 border-2 border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-yellow-400 transition-colors placeholder:text-white/20 resize-none font-medium"
-                      />
-                    </div>
+                        <div>
+                          <label className="text-[10px] tracking-[0.3em] uppercase text-white/50 font-bold block mb-2">
+                            What needs cleaning? *
+                          </label>
+                          <textarea
+                            rows={5}
+                            placeholder="Driveway, house, roof… give us the details"
+                            value={form.message}
+                            onChange={(e) => update('message', e.target.value)}
+                            className="w-full bg-white/5 border-2 border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-yellow-400 transition-colors placeholder:text-white/20 resize-none font-medium"
+                          />
+                        </div>
 
-                    <button
-                      type="button"
-                      className="group w-full flex items-center justify-between gap-3 px-6 py-4 bg-yellow-400 text-slate-900 font-bold rounded-2xl border-2 border-slate-900 hover:translate-x-0.5 hover:translate-y-0.5 transition-all text-base"
-                    >
-                      <span className="flex items-center gap-2">
-                        <Send className="w-4 h-4" strokeWidth={2.5} />
-                        Send my quote request
-                      </span>
-                      <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
-                    </button>
+                        {status === 'error' && (
+                          <div className="flex items-center gap-2 bg-red-500/10 border border-red-500/30 rounded-xl px-4 py-3">
+                            <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
+                            <p className="text-red-400 text-sm font-medium">{errorMsg}</p>
+                          </div>
+                        )}
 
-                    <p className="text-[11px] text-white/30 text-center font-medium tracking-wide">
-                      We reply within a few hours during business days.
-                    </p>
+                        <button
+                          type="button"
+                          onClick={handleSubmit}
+                          disabled={status === 'loading'}
+                          className="group w-full flex items-center justify-between gap-3 px-6 py-4 bg-yellow-400 text-slate-900 font-bold rounded-2xl border-2 border-slate-900 hover:translate-x-0.5 hover:translate-y-0.5 transition-all text-base disabled:opacity-60 disabled:cursor-not-allowed"
+                        >
+                          <span className="flex items-center gap-2">
+                            <Send className="w-4 h-4" strokeWidth={2.5} />
+                            {status === 'loading' ? 'Sending…' : 'Send my quote request'}
+                          </span>
+                          <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
+                        </button>
+
+                        <p className="text-[11px] text-white/30 text-center font-medium tracking-wide">
+                          We reply within a few hours during business days.
+                        </p>
+                      </>
+                    )}
                   </div>
 
                   <HazardTape className="w-full h-2" />
                 </div>
               </div>
             </motion.div>
-
           </div>
         </div>
       </section>
@@ -233,32 +306,22 @@ export default function ContactPage() {
 }
 
 function ContactRow({
-  icon,
-  label,
-  value,
-  href,
+  icon, label, value, href,
 }: {
-  icon: React.ReactNode;
-  label: string;
-  value: string;
-  href?: string;
+  icon: React.ReactNode; label: string; value: string; href?: string;
 }) {
   const content = (
     <div className="flex items-center gap-3 group px-4 py-4 rounded-2xl border-2 border-slate-900 bg-white shadow-[3px_3px_0_0_#FFD60A] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all overflow-hidden w-full">
       <div className="w-9 h-9 rounded-full bg-[#00B8D9] border-2 border-slate-900 text-white flex items-center justify-center shrink-0">
         {icon}
       </div>
-      {/* min-w-0 + overflow-hidden forces text to truncate inside flex */}
       <div className="flex-1 min-w-0 overflow-hidden">
         <div className="text-[9px] tracking-[0.3em] uppercase text-slate-400 font-bold mb-0.5">{label}</div>
         <div className="font-display text-base text-slate-900 leading-none truncate">{value}</div>
       </div>
-      {href && (
-        <ArrowRight className="w-4 h-4 text-slate-400 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
-      )}
+      {href && <ArrowRight className="w-4 h-4 text-slate-400 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />}
     </div>
   );
-
   return href
     ? <a href={href} className="block w-full overflow-hidden">{content}</a>
     : <div className="w-full overflow-hidden">{content}</div>;

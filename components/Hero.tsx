@@ -30,7 +30,6 @@ export default function Hero() {
           font-family: 'DM Sans', sans-serif;
           font-weight: 900;
           font-style: normal;
-          /* stretch to fill viewport width */
           display: block;
           width: 100%;
           font-size: clamp(4.5rem, 23vw, 18rem);
@@ -114,7 +113,7 @@ export default function Hero() {
             </span>
             <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border-2 border-slate-900 text-[10px] tracking-[0.25em] uppercase font-bold text-slate-900 shadow-[3px_3px_0_0_#00B8D9]">
               <Sparkles className="w-3 h-3 text-[#00B8D9]" />
-              4.8 · 50+ jobs
+              5 star average rating
             </span>
             <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#00B8D9] border-2 border-slate-900 text-[10px] tracking-[0.25em] uppercase font-bold text-white shadow-[3px_3px_0_0_#0F172A]">
               <Zap className="w-3 h-3" />
@@ -160,9 +159,9 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.55 }}
             className="mt-6 flex justify-center gap-3"
           >
-            <MiniStat value="50+" label="5-star jobs" color="yellow" />
-            <MiniStat value="50+" label="Properties" color="white" />
-            <MiniStat value="4.8★" label="Avg rating" color="cyan" />
+            <MiniStat value="5★" label="Avg rating" color="yellow" />
+            <MiniStat value="Fixed" label="Price always" color="white" />
+            <MiniStat value="100%" label="Satisfaction" color="cyan" />
           </motion.div>
 
           {/* CTAs */}
@@ -182,7 +181,7 @@ export default function Hero() {
             </Link>
             <a
               href={`tel:${SITE.phoneRaw}`}
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-yellow-400 border-2 border-slate-900 text-slate-900 font-bold rounded-full hover:bg-yellow-300 transition-colors shadow-[4px_4px_0_0_#0F172A] text-base w-full sm:w-auto"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-yellow-400 border-2 border-slate-900 text-slate-900 font-bold rounded-full hover:bg-yellow-300 transition-colors shadow-[0_0_20px_rgba(255,214,10,0.6)] text-base w-full sm:w-auto"
             >
               <Phone className="w-4 h-4" />
               {SITE.phone}
@@ -202,13 +201,13 @@ export default function Hero() {
                   <Star key={i} className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
                 ))}
               </div>
-              <span className="font-bold text-slate-900">4.8</span>
+              <span className="font-bold text-slate-900">5.0</span>
               <span>on Google</span>
             </div>
             <span className="text-slate-400">·</span>
             <span className="flex items-center gap-1.5">
               <Shield className="w-3.5 h-3.5 text-[#00B8D9]" />
-              Fully insured
+              Public Liability Insurance
             </span>
             <span className="text-slate-400">·</span>
             <span>Police checked</span>

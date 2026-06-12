@@ -12,7 +12,7 @@ import Process from '@/components/Process';
 import FAQ from '@/components/FAQ';
 import CTA from '@/components/CTA';
 import Footer from '@/components/Footer';
-import BookingSection from '@/components/BookingSection';
+
 
 export default function HomePage() {
   return (
@@ -21,11 +21,11 @@ export default function HomePage() {
       <Hero />
       <Marquee />
       <Stats />
-      <Services />
+      {/* Swapped: FilthOMeter now comes before Services */}
       <FilthOMeter />
+      <Services />
       <Transformations />
       <Comparison />
-      <BookingSection />
       <SuburbMap />
       <Reviews />
       <Process />

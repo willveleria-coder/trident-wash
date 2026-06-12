@@ -17,7 +17,7 @@ export const SITE = {
 export const STATS = [
   { value: 100, suffix: '+', label: 'Five-star reviews', tag: 'Google verified' },
   { value: 850, suffix: '+', label: 'Properties cleaned', tag: 'Across Melbourne' },
-  { value: 4.8, suffix: '★', label: 'Average rating', tag: 'Every platform', decimals: 1 },
+  { value: 5.0, suffix: '★', label: 'Average rating', tag: 'Every platform', decimals: 1 },
   { value: 100, suffix: '%', label: 'Satisfaction promise', tag: 'Or we come back' },
 ];
 
@@ -47,7 +47,7 @@ export const SERVICES = [
     title: 'Roof Cleaning',
     short: 'Tile, Colorbond, terracotta.',
     long:
-      'Soft-wash roof treatment that kills lichen and moss at the root, then rinses clean. No high-pressure damage, no broken tiles, no walking on dry brittle surfaces.',
+      'Soft-wash roof treatment that kills lichen and moss at the root, then rinses clean. No high-pressure damage, no broken tiles.',
     surfaces: ['Concrete tile', 'Terracotta', 'Colorbond', 'Slate'],
     accent: '#2BA8B0',
     number: '03',
@@ -110,7 +110,7 @@ export const REVIEWS = [
     suburb: 'Bentleigh',
     rating: 5,
     body:
-      'Sunny really takes pride in his work. Pressure cleaned my concrete, side paths, driveway, sealed it, and the footpath. Even sanded and pressure cleaned my deck. Will absolutely call him again.',
+      'Really takes pride in his work. Pressure cleaned my concrete, side paths, driveway, sealed it, and the footpath. Even sanded and pressure cleaned my deck. Will absolutely call again.',
     service: 'Pressure Washing + Sealcoating',
     date: 'Mar 2025',
   },
@@ -128,7 +128,7 @@ export const REVIEWS = [
     suburb: 'Doncaster',
     rating: 5,
     body:
-      'Got three quotes. Sunny was reasonable and the work was a class above. Patio was full of mud, moss and algae — gone. Communication beyond what you expect.',
+      'Got three quotes. Reasonable pricing and the work was a class above. Patio was full of mud, moss and algae — gone. Communication beyond what you expect.',
     service: 'Soft Washing + Patio',
     date: 'Feb 2025',
   },
@@ -142,11 +142,11 @@ export const REVIEWS = [
     date: 'Jan 2025',
   },
   {
-    name: 'Saeed A.',
+    name: 'Will',
     suburb: 'Brighton',
     rating: 5,
     body:
-      'More of a thank you than a review. Sunny went above and beyond. Prompt, thorough, punctual. House and driveway look brand new.',
+      'Quoted $480 over the phone, paid $480 on the day. Exactly what they said.',
     service: 'House Soft Wash',
     date: 'Jan 2025',
   },
@@ -155,7 +155,7 @@ export const REVIEWS = [
     suburb: 'Clayton',
     rating: 5,
     body:
-      'Best in the business. Will call him again. Friendly, professional, and the job speaks for itself.',
+      'Best in the business. Will call again. Friendly, professional, and the job speaks for itself.',
     service: 'Driveway',
     date: 'Dec 2024',
   },
@@ -166,11 +166,10 @@ export const SUBURBS = [
   { name: 'Hawthorn', x: 56, y: 48 },
   { name: 'Camberwell', x: 60, y: 50 },
   { name: 'Kew', x: 55, y: 44 },
-  { name: 'Richmond', x: 49, y: 50 },
+  { name: 'Templestowe', x: 65, y: 38 },
   // Inner south
   { name: 'South Yarra', x: 50, y: 56 },
-  { name: 'Prahran', x: 51, y: 58 },
-  { name: 'St Kilda', x: 48, y: 64 },
+  { name: 'Toorak', x: 53, y: 58 },
   { name: 'Brighton', x: 50, y: 70 },
   { name: 'Bentleigh', x: 54, y: 72 },
   { name: 'Sandringham', x: 50, y: 76 },
@@ -182,8 +181,8 @@ export const SUBURBS = [
   { name: 'Oakleigh', x: 61, y: 64 },
   { name: 'Doncaster', x: 65, y: 42 },
   { name: 'Box Hill', x: 62, y: 46 },
+  { name: 'Balwyn', x: 60, y: 44 },
   // North
-  { name: 'Brunswick', x: 47, y: 38 },
   { name: 'Carlton', x: 47, y: 44 },
   { name: 'Northcote', x: 50, y: 38 },
   { name: 'Preston', x: 51, y: 32 },
@@ -197,13 +196,14 @@ export const SUBURBS = [
   { name: 'Dandenong', x: 70, y: 72 },
   { name: 'Frankston', x: 60, y: 86 },
   { name: 'Mornington', x: 56, y: 92 },
+  { name: 'Toorak', x: 53, y: 57 },
 ];
 
 export const FILTH_LEVELS = [
   { level: 1, label: 'Light dust', desc: 'Annual maintenance', multiplier: 1.0 },
   { level: 2, label: 'Visible grime', desc: 'A year or two of build-up', multiplier: 1.25 },
   { level: 3, label: 'Moss & algae', desc: 'Three+ years of neglect', multiplier: 1.55 },
-  { level: 4, label: 'Black & green', desc: 'Heavy biological growth', multiplier: 1.85 },
+  { level: 4, label: 'Black & green', desc: 'Heavy organic growth', multiplier: 1.85 },
   { level: 5, label: 'Archaeological', desc: 'You forgot what it looked like', multiplier: 2.2 },
 ];
 
