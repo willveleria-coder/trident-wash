@@ -258,7 +258,7 @@ We protect every garden bed, plant and surrounding surface before we apply anyth
 
 Lichen in particular is extremely difficult to remove once established. It bonds chemically to porous surfaces and can only be effectively treated with a biocide that kills the organism at the root. Physical removal alone — scraping or pressure washing — damages the tile surface and leaves root fragments that regrow rapidly.
 
-Our process applies a professional biocide solution using extension lances. The solution dwells on the roof, killing the organic matter. Dead moss and lichen then naturally wash off over the following rainfall events, or we rinse after the appropriate dwell time. The result is a clean roof with biology eliminated at the root — not just moved around.`,
+Our process applies a professional biocide solution. The solution dwells on the roof, killing the organic matter. Dead moss and lichen then naturally wash off over the following rainfall events, or we rinse after the appropriate dwell time. The result is a clean roof with biology eliminated at the root — not just moved around.`,
     surfaces: [
       'Concrete roof tiles',
       'Terracotta and clay tiles',
@@ -297,7 +297,7 @@ Our process applies a professional biocide solution using extension lances. The 
       {
         step: '05',
         title: 'Photo report & pack up',
-        desc: 'We photograph the roof after cleaning and send you a complete before/during report. We also note any structural concerns — cracked tiles, failed ridge capping, gutter damage — so you can address them.',
+        desc: 'We photograph the roof after cleaning and send you a complete after report. We also note any structural concerns — cracked tiles, failed ridge capping, gutter damage — so you can address them.',
       },
     ],
     results: [
