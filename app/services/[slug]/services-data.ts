@@ -281,21 +281,16 @@ Our process applies a professional biocide solution. The solution dwells on the 
       },
       {
         step: '02',
-        title: 'Gutter and downpipe protection',
-        desc: 'Downpipe outlets are covered to prevent chemical runoff entering stormwater systems during treatment.',
-      },
-      {
-        step: '03',
         title: 'Biocide application',
         desc: 'Our professional biocide solution is applied at low pressure using extension lances. We work methodically across every pitch and valley, ensuring full coverage including ridge capping and flashings.',
       },
       {
-        step: '04',
+        step: '03',
         title: 'Dwell time',
         desc: 'The biocide is left to work — longer for heavy infestations. This kills moss, lichen and algae at the root level, not just at the surface.',
       },
       {
-        step: '05',
+        step: '04',
         title: 'Photo report & pack up',
         desc: 'We photograph the roof after cleaning and send you a complete after report. We also note any structural concerns — cracked tiles, failed ridge capping, gutter damage — so you can address them.',
       },
@@ -644,7 +639,7 @@ There are two categories of sealer: penetrating sealers and topical sealers. Pen
 
 Topical sealers sit on top of the surface and form a protective film. They can be matte, satin or gloss finish and enhance the surface colour — a popular choice after exposed aggregate cleaning. They typically last 2–4 years before recoating.
 
-We always pressure wash before sealing. The concrete must be completely dry before sealer is applied.`,
+We always pressure wash before sealing.`,
     surfaces: [
       'Plain broom-finish concrete',
       'Exposed aggregate concrete',
@@ -655,7 +650,6 @@ We always pressure wash before sealing. The concrete must be completely dry befo
       'Bluestone paving',
     ],
     warnings: [
-      'Concrete must be completely dry before sealing — minimum 24–48 hours after washing',
       'Do not apply sealer if rain is forecast within 4 hours',
       'Foot traffic: 24 hours minimum after application',
       'Vehicle traffic: 72 hours minimum after application',
@@ -665,7 +659,7 @@ We always pressure wash before sealing. The concrete must be completely dry befo
       {
         step: '01',
         title: 'Surface preparation',
-        desc: 'The concrete must be freshly cleaned and completely dry. We check moisture content with a meter on the day of sealing.',
+        desc: 'The concrete must be freshly cleaned. We check moisture content with a meter on the day of sealing.',
       },
       {
         step: '02',

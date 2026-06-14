@@ -105,7 +105,7 @@ export default function Footer() {
                 ))}
               </div>
               <span className="text-xs text-slate-900 font-bold tracking-wide">
-                5.0 · 100+ Google reviews
+                5.0 · 20+ Google reviews
               </span>
             </div>
           </div>
