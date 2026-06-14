@@ -112,7 +112,7 @@ export default function GalleryPage() {
             className="mt-10 flex flex-wrap justify-center gap-3"
           >
             <div className="bg-yellow-400 border-2 border-slate-900 rounded-2xl px-5 py-3 shadow-[4px_4px_0_0_#0F172A] -rotate-1">
-              <div className="font-display text-2xl leading-none text-slate-900">50+</div>
+              <div className="font-display text-2xl leading-none text-slate-900">20+</div>
               <div className="text-[9px] tracking-[0.2em] uppercase font-bold text-slate-900/70 mt-1">
                 Five-star jobs
               </div>
@@ -124,7 +124,7 @@ export default function GalleryPage() {
               </div>
             </div>
             <div className="bg-white border-2 border-slate-900 rounded-2xl px-5 py-3 shadow-[4px_4px_0_0_#0F172A] -rotate-1">
-              <div className="font-display text-2xl leading-none text-slate-900">4.8★</div>
+              <div className="font-display text-2xl leading-none text-slate-900">4.7★</div>
               <div className="text-[9px] tracking-[0.2em] uppercase font-bold text-slate-500 mt-1">
                 Google rating
               </div>
