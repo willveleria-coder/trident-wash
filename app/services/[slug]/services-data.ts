@@ -379,11 +379,6 @@ We clear gutters by hand — removing all leaf matter, sludge, seedlings and deb
       },
       {
         step: '04',
-        title: 'Gutter scrub',
-        desc: 'Gutter channels are scrubbed to remove accumulated sediment, biological staining and the sludge layer that forms at the bottom of every gutter over time.',
-      },
-      {
-        step: '05',
         title: 'Final flush & pack up',
         desc: 'A final water flush from end to end confirms clear flow through the entire system. We photograph every gutter run after cleaning and note any damage observed.',
       },
@@ -736,8 +731,7 @@ The second most important factor is using the right chemistry for the surface. A
 
 We assess the substrate, the paint type and the age of the tag before selecting our removal approach. On porous surfaces like brick and render, we typically use a gel-based chemical remover that penetrates rather than just dissolving the surface layer. On non-porous surfaces like Colorbond and glass, solvent-based products work quickly and completely.
 
-We also offer anti-graffiti coating application after removal — a sacrificial coating that prevents paint bonding to the surface, making future removal significantly faster and easier.`,
-    surfaces: [
+We also offer anti-graffiti coating application after removal — a sacrificial coating that prevents paint bonding to the surface, making future removal significantly faster and easier.`,    surfaces: [
       'Brick — face brick and common brick',
       'Concrete — plain, exposed aggregate, tilt-up',
       'Render — acrylic and cement',
@@ -779,18 +773,12 @@ We also offer anti-graffiti coating application after removal — a sacrificial 
         title: 'Assessment & pack up',
         desc: 'We assess the result once the surface is rinsed and dry. Stubborn areas or deep-set paint may require a second treatment at no extra cost.',
       },
-      {
-        step: '06',
-        title: 'Anti-graffiti coating (optional)',
-        desc: 'On surfaces likely to be targeted again, we can apply an anti-graffiti coating that prevents paint from bonding to the substrate.',
-      },
     ],
     results: [
       'Graffiti fully removed in most cases',
       'Surface substrate undamaged',
       'Chemical residue fully neutralised and rinsed',
       'Before and during photos provided',
-      'Anti-graffiti coating available to prevent recurrence',
       'Same-week response across Melbourne',
     ],
     beforeAfter: [
@@ -800,7 +788,6 @@ We also offer anti-graffiti coating application after removal — a sacrificial 
       { title: 'Right chemistry for the surface', desc: 'We don\'t use one product on everything. Getting this wrong causes damage and wastes time.' },
       { title: 'Same-week response', desc: 'Speed matters in graffiti removal. The longer it sits, the harder it is.' },
       { title: 'Honest about outcomes', desc: 'We\'ll tell you what\'s achievable before we start, not after.' },
-      { title: 'Anti-graffiti protection', desc: 'We can apply a sacrificial coating after removal that dramatically speeds up any future removal.' },
     ],
     faqs: [
       {
