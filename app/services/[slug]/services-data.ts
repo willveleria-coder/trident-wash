@@ -70,11 +70,6 @@ Most residential driveways take 1–3 hours depending on size and condition. Eve
       },
       {
         step: '04',
-        title: 'Edge & detail work',
-        desc: 'Every expansion joint, edge, step riser and corner is hand-cleaned. This is where most operators cut corners — we don\'t.',
-      },
-      {
-        step: '05',
         title: 'Final inspection & pack up',
         desc: 'We do a final check of the entire area with you before packing up to confirm you\'re satisfied with the result.',
       },
@@ -167,7 +162,7 @@ We protect every garden bed, plant and surrounding surface before we apply anyth
       {
         step: '01',
         title: 'Pre-job protection',
-        desc: 'All garden beds, plants, outdoor furniture and adjacent hard surfaces are thoroughly wetted down and covered before any chemical application begins.',
+        desc: 'All garden beds, plants, outdoor furniture and adjacent hard surfaces are thoroughly wetted down before any chemical application begins.',
       },
       {
         step: '02',
