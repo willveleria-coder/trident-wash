@@ -214,7 +214,7 @@ export default function AboutPage() {
                   At Trident, we focus on doing exterior cleaning properly — from the right nozzle for each surface, to biodegradable detergents, to photo documentation on every job.
                 </p>
                 <p>
-                  We set up with the right gear — twin-lance machines, surface cleaners, soft-wash injectors, pure-water poles. Fully insured. Trained on every method.
+                  We set up with the right gear — commercial grade machines, surface cleaners, soft-wash injectors, pure-water poles. Fully insured. Trained on every method.
                 </p>
                 <p className="font-bold text-slate-900">
                   Most of our work comes from referrals. That's the only metric that matters.

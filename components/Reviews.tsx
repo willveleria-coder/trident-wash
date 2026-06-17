@@ -171,7 +171,7 @@ export default function Reviews() {
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                   ))}
-                  <span className="text-[10px] tracking-[0.3em] uppercase font-bold text-slate-500 ml-1">5.0 · 100+ reviews</span>
+                  <span className="text-[10px] tracking-[0.3em] uppercase font-bold text-slate-500 ml-1">5.0 · 20+ reviews</span>
                 </div>
                 <div className="font-display text-3xl lg:text-4xl text-slate-900 leading-tight tracking-tight">
                   Join the list of happy customers.{' '}
