@@ -101,7 +101,7 @@ export default function GalleryPage() {
           >
             Real properties. Real photos.{' '}
             <span className="font-bold">No stock images, no agency b-roll.</span> Every job
-            below is from the last 30 days.
+            below is work we've done.
           </motion.p>
 
           {/* Mini stats */}
