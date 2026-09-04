@@ -1,82 +1,36 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
+// app/api/contact/route.ts
+import { NextResponse } from 'next/server'
+import { createClient } from '@supabase/supabase-js'
 
-const supabase = createClient(
-  process.env.SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_KEY!
-);
-
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   try {
-    const body = await req.json();
-    const { name, phone, suburb, message, type, quoteDetails } = body;
+    const { name, phone, email, service, message } = await req.json()
 
-    if (!name || !phone || !message) {
-      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+    if (!name?.trim() || !phone?.trim()) {
+      return NextResponse.json({ error: 'Name and phone required.' }, { status: 400 })
     }
 
+    const supabase = createClient(
+      process.env.SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_KEY!
+    )
+
     const { error } = await supabase.from('enquiries').insert({
-      id: Date.now().toString(),
-      type: type || 'contact',
       name,
       phone,
-      suburb: suburb || '—',
-      message,
-      quote_details: quoteDetails || null,
-      read: false,
-    });
+      email: email || null,
+      service: service || null,
+      message: message || null,
+    })
 
-    if (error) throw error;
+    if (error) {
+      console.error('Supabase insert error:', error)
+      return NextResponse.json({ error: 'Insert failed.' }, { status: 500 })
+    }
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ ok: true })
   } catch (err) {
-    console.error(err);
-    return NextResponse.json({ error: 'Server error' }, { status: 500 });
+    console.error('Contact route error:', err)
+    return NextResponse.json({ error: 'Server error.' }, { status: 500 })
   }
-}
-
-export async function GET(req: NextRequest) {
-  const { searchParams } = new URL(req.url);
-  if (searchParams.get('code') !== '4994') {
-    return NextResponse.json({ error: 'Unauthorised' }, { status: 401 });
-  }
-
-  const { data, error } = await supabase
-    .from('enquiries')
-    .select('*')
-    .order('created_at', { ascending: false });
-
-  if (error) {
-    console.error(error);
-    return NextResponse.json({ error: 'Server error' }, { status: 500 });
-  }
-
-  // Map quote_details back to camelCase for the frontend
-  const enquiries = (data ?? []).map((e) => ({
-    ...e,
-    quoteDetails: e.quote_details,
-  }));
-
-  return NextResponse.json({ enquiries });
-}
-
-export async function PATCH(req: NextRequest) {
-  const { searchParams } = new URL(req.url);
-  if (searchParams.get('code') !== '4994') {
-    return NextResponse.json({ error: 'Unauthorised' }, { status: 401 });
-  }
-
-  const { id } = await req.json();
-
-  const { error } = await supabase
-    .from('enquiries')
-    .update({ read: true })
-    .eq('id', id);
-
-  if (error) {
-    console.error(error);
-    return NextResponse.json({ error: 'Server error' }, { status: 500 });
-  }
-
-  return NextResponse.json({ success: true });
 }

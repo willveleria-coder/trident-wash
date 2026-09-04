@@ -2,10 +2,11 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ArrowRight, Star, Sparkles, Phone, Zap, Shield } from 'lucide-react';
+import { ArrowRight, Star, Phone, Shield } from 'lucide-react';
 import Link from 'next/link';
 import HazardTape from './HazardTape';
 import { SITE } from '@/lib/data';
+import HeroContactForm from './HeroContactForm';
 
 export default function Hero() {
   return (
@@ -31,10 +32,9 @@ export default function Hero() {
           font-weight: 900;
           font-style: normal;
           display: block;
-          width: 100%;
-          font-size: clamp(4.5rem, 23vw, 18rem);
-          line-height: 0.88;
-          letter-spacing: -0.03em;
+          font-size: clamp(4.5rem, 17vw, 10rem);
+          line-height: 0.84;
+          letter-spacing: -0.038em;
           color: #0f172a;
         }
 
@@ -42,15 +42,19 @@ export default function Hero() {
           font-family: 'DM Sans', sans-serif;
           font-weight: 900;
           font-style: italic;
-          display: block;
-          width: 100%;
-          font-size: clamp(2rem, 12vw, 9.5rem);
-          line-height: 0.9;
-          letter-spacing: -0.02em;
+          display: inline-block;
+          font-size: clamp(2rem, 8vw, 4.7rem);
+          line-height: 0.95;
+          letter-spacing: -0.025em;
           background: linear-gradient(90deg, #00B8D9 0%, #0EA5E9 50%, #00B8D9 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
+        }
+
+        @media (min-width: 1024px) {
+          .hero-line-1 { font-size: clamp(5rem, 9.6vw, 9rem); }
+          .hero-line-2 { font-size: clamp(2.2rem, 4.5vw, 4.2rem); }
         }
       `}</style>
 
@@ -77,17 +81,17 @@ export default function Hero() {
 
         {/* ── WAVES ── */}
         <div className="absolute inset-0 z-10 pointer-events-none" style={{ overflow: 'hidden' }}>
-          <svg aria-hidden className="absolute bottom-0 left-0 h-[40%] pointer-events-none"
+          <svg aria-hidden className="absolute bottom-0 left-0 h-[30%] pointer-events-none"
             style={{ width: '200%', animation: 'wave-flow-slow 18s ease-in-out infinite', willChange: 'transform' }}
             viewBox="0 0 2880 400" preserveAspectRatio="none">
             <path d="M0,200 C480,80 960,320 1440,200 C1920,80 2400,320 2880,200 L2880,400 L0,400 Z" fill="#0EA5E9" opacity="0.55" />
           </svg>
-          <svg aria-hidden className="absolute bottom-0 left-0 h-[35%] pointer-events-none"
+          <svg aria-hidden className="absolute bottom-0 left-0 h-[26%] pointer-events-none"
             style={{ width: '200%', animation: 'wave-flow-mid 12s ease-in-out infinite', willChange: 'transform' }}
             viewBox="0 0 2880 400" preserveAspectRatio="none">
             <path d="M0,250 C320,150 720,350 1200,250 C1680,150 2160,350 2880,250 L2880,400 L0,400 Z" fill="#22D3EE" opacity="0.6" />
           </svg>
-          <svg aria-hidden className="absolute bottom-0 left-0 h-[28%] pointer-events-none"
+          <svg aria-hidden className="absolute bottom-0 left-0 h-[20%] pointer-events-none"
             style={{ width: '200%', animation: 'wave-flow-fast 8s ease-in-out infinite', willChange: 'transform' }}
             viewBox="0 0 2880 400" preserveAspectRatio="none">
             <path d="M0,280 C240,200 600,380 960,280 C1320,200 1680,380 2040,280 C2400,200 2640,380 2880,280 L2880,400 L0,400 Z" fill="#67E8F9" opacity="0.7" />
@@ -95,123 +99,120 @@ export default function Hero() {
         </div>
 
         {/* ── CONTENT ── */}
-        <div className="relative z-20 w-full px-4 sm:px-6 lg:px-10 pt-8 lg:pt-14 pb-20 lg:pb-28 text-center">
+        <div className="relative z-20 w-full px-4 sm:px-6 lg:px-10 pt-8 lg:pt-12 pb-28 sm:pb-32 lg:pb-40">
+          <div className="mx-auto grid max-w-[1500px] grid-cols-1 items-center gap-10 md:grid-cols-[1.1fr_0.9fr] md:gap-8 lg:gap-14 xl:gap-20">
 
-          {/* PILLS */}
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex flex-wrap items-center justify-center gap-2 mb-6 lg:mb-8"
-          >
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-yellow-400 border-2 border-slate-900 text-[10px] tracking-[0.25em] uppercase font-bold text-slate-900 shadow-[3px_3px_0_0_#0F172A]">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-900 opacity-75" />
-                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-slate-900" />
-              </span>
-              Live · Now booking
-            </span>
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border-2 border-slate-900 text-[10px] tracking-[0.25em] uppercase font-bold text-slate-900 shadow-[3px_3px_0_0_#00B8D9]">
-              <Sparkles className="w-3 h-3 text-[#00B8D9]" />
-              5 star average rating
-            </span>
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#00B8D9] border-2 border-slate-900 text-[10px] tracking-[0.25em] uppercase font-bold text-white shadow-[3px_3px_0_0_#0F172A]">
-              <Zap className="w-3 h-3" />
-              Same-week start
-            </span>
-          </motion.div>
+            {/* ══════════ LEFT COLUMN ══════════ */}
+            <div className="text-left">
 
-          {/* HEADLINE */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="relative"
-          >
-            <span className="hero-line-1">Filth,</span>
-            <span className="hero-line-2 relative inline-block w-full">
-              meet your match.
-              <svg
-                className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-[90%]"
-                viewBox="0 0 400 8"
-                preserveAspectRatio="none"
-                fill="none"
+              {/* HEADLINE */}
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="relative"
               >
-                <path d="M2 5 Q 100 1, 200 4 T 398 3" stroke="#FFD60A" strokeWidth="4" strokeLinecap="round" />
-              </svg>
-            </span>
-          </motion.h1>
+                <span className="hero-line-1">Filth,</span>
+                <span className="block mt-1.5">
+                  <span className="hero-line-2 relative">
+                    meet your match.
+                    <svg
+                      className="absolute -bottom-0.5 left-0 w-full"
+                      viewBox="0 0 400 8"
+                      preserveAspectRatio="none"
+                      fill="none"
+                      aria-hidden
+                    >
+                      <path d="M2 5 Q 100 1, 200 4 T 398 3" stroke="#FFD60A" strokeWidth="4" strokeLinecap="round" />
+                    </svg>
+                  </span>
+                </span>
+              </motion.h1>
 
-          {/* SUBHEADING */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-8 text-base sm:text-lg lg:text-xl text-slate-800 max-w-lg mx-auto leading-relaxed font-semibold"
-          >
-            Melbourne's most thorough exterior clean. Driveways that look poured yesterday. Roofs that look re-tiled. Guaranteed spotless.
-          </motion.p>
+              {/* SUBHEADING */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.35 }}
+                className="mt-6 text-sm sm:text-base text-slate-800 max-w-md leading-relaxed font-semibold"
+              >
+                Melbourne's most thorough exterior clean. Driveways that look poured yesterday. Roofs that look re-tiled. Guaranteed spotless.
+              </motion.p>
 
-          {/* MINI STATS */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.55 }}
-            className="mt-6 flex justify-center gap-3"
-          >
-            <MiniStat value="5★" label="Avg rating" color="yellow" />
-            <MiniStat value="Fixed" label="Price always" color="white" />
-            <MiniStat value="100%" label="Satisfaction" color="cyan" />
-          </motion.div>
+              {/* MINI STATS */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="mt-5 flex flex-wrap justify-start gap-2"
+              >
+                <MiniStat value="5★" label="Avg rating" color="yellow" />
+                <MiniStat value="Fixed" label="Price always" color="white" />
+                <MiniStat value="100%" label="Satisfaction" color="cyan" />
+              </motion.div>
 
-          {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-            className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            <Link
-              href="/#free-quote"
-              className="group inline-flex items-center justify-center gap-3 px-8 py-4 text-white font-bold rounded-full border-2 border-slate-900 shadow-[0_8px_30px_-4px_rgba(0,184,217,0.7)] hover:scale-[1.03] transition-transform text-base w-full sm:w-auto"
-              style={{ background: 'linear-gradient(135deg, #00B8D9 0%, #0EA5E9 100%)' }}
-            >
-              Get a free quote
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-            <a
-              href={`tel:${SITE.phoneRaw}`}
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-yellow-400 border-2 border-slate-900 text-slate-900 font-bold rounded-full hover:bg-yellow-300 transition-colors shadow-[0_0_20px_rgba(255,214,10,0.6)] text-base w-full sm:w-auto"
-            >
-              <Phone className="w-4 h-4" />
-              {SITE.phone}
-            </a>
-          </motion.div>
+              {/* CTA */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.65 }}
+                className="mt-5 flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-2.5"
+              >
+                <Link
+                  href="#free-quote"
+                  className="group inline-flex md:hidden items-center justify-center gap-2 px-6 py-3 text-white font-bold rounded-full border-2 border-slate-900 shadow-[0_6px_22px_-4px_rgba(0,184,217,0.7)] hover:scale-[1.03] transition-transform text-sm w-full sm:w-auto"
+                  style={{ background: 'linear-gradient(135deg, #00B8D9 0%, #0EA5E9 100%)' }}
+                >
+                  Get a free quote
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+                <a
+                  href={`tel:${SITE.phoneRaw}`}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-yellow-400 border-2 border-slate-900 text-slate-900 font-bold rounded-full hover:bg-yellow-300 transition-colors shadow-[0_0_16px_rgba(255,214,10,0.55)] text-sm w-full sm:w-auto"
+                >
+                  <Phone className="w-3.5 h-3.5" />
+                  {SITE.phone}
+                </a>
+              </motion.div>
 
-          {/* TRUST BAR */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
-            className="mt-6 hidden sm:flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs uppercase tracking-[0.15em] text-slate-700"
-          >
-            <div className="flex items-center gap-1.5">
-              <div className="flex">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
-                ))}
-              </div>
-              <span className="font-bold text-slate-900">5.0</span>
-              <span>on Google</span>
+              {/* TRUST BAR */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.85 }}
+                className="mt-5 hidden sm:flex flex-wrap items-center justify-start gap-x-3.5 gap-y-2 text-[10px] uppercase tracking-[0.12em] text-slate-700"
+              >
+                <div className="flex items-center gap-1.5">
+                  <div className="flex">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  <span className="font-bold text-slate-900">5.0</span>
+                  <span>on Google</span>
+                </div>
+                <span className="text-slate-400">·</span>
+                <span className="flex items-center gap-1.5">
+                  <Shield className="w-3 h-3 text-[#00B8D9]" />
+                  Insured
+                </span>
+                <span className="text-slate-400">·</span>
+                <span>Police checked</span>
+              </motion.div>
             </div>
-            <span className="text-slate-400">·</span>
-            <span className="flex items-center gap-1.5">
-              <Shield className="w-3.5 h-3.5 text-[#00B8D9]" />
-              Public Liability Insurance
-            </span>
-            <span className="text-slate-400">·</span>
-            <span>Police checked</span>
-          </motion.div>
+
+            {/* ══════════ RIGHT COLUMN — FORM ══════════ */}
+            <motion.div
+              id="free-quote"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.25 }}
+              className="w-full scroll-mt-28"
+            >
+              <HeroContactForm />
+            </motion.div>
+
+          </div>
         </div>
       </section>
     </>
@@ -225,9 +226,9 @@ function MiniStat({ value, label, color }: { value: string; label: string; color
     cyan:   { box: 'bg-[#00B8D9] border-slate-900 shadow-[3px_3px_0_0_#FFD60A]',   number: 'text-white',     label: 'text-white/80'     },
   }[color];
   return (
-    <div className={`rounded-2xl border-2 px-4 py-3 lg:px-5 lg:py-4 ${styles.box}`}>
-      <div className={`font-display text-2xl lg:text-3xl leading-none tracking-tightest font-black ${styles.number} tabular`}>{value}</div>
-      <div className={`text-[9px] tracking-[0.2em] uppercase mt-1.5 font-bold ${styles.label}`}>{label}</div>
+    <div className={`rounded-xl border-2 px-3 py-2 ${styles.box}`}>
+      <div className={`font-display text-lg leading-none tracking-tightest font-black ${styles.number} tabular`}>{value}</div>
+      <div className={`text-[8px] tracking-[0.2em] uppercase mt-1 font-bold ${styles.label}`}>{label}</div>
     </div>
   );
 }

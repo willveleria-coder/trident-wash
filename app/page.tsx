@@ -3,7 +3,6 @@ import Hero from '@/components/Hero';
 import Marquee from '@/components/Marquee';
 import Stats from '@/components/Stats';
 import Services from '@/components/Services';
-import FilthOMeter from '@/components/FilthOMeter';
 import SuburbMap from '@/components/SuburbMap';
 import Comparison from '@/components/Comparison';
 import Transformations from '@/components/Transformations';
@@ -22,7 +21,7 @@ export default function HomePage() {
       <Marquee />
       <Stats />
       {/* Swapped: FilthOMeter now comes before Services */}
-      <FilthOMeter />
+   
       <Services />
       <Transformations />
       <Comparison />
