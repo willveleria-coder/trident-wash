@@ -1,5 +1,6 @@
 import Nav from '@/components/Nav';
 import Hero from '@/components/Hero';
+import BeforeAfter from '@/components/BeforeAfter';
 import Marquee from '@/components/Marquee';
 import Stats from '@/components/Stats';
 import Services from '@/components/Services';
@@ -19,9 +20,8 @@ export default function HomePage() {
       <Nav />
       <Hero />
       <Marquee />
+      <BeforeAfter />
       <Stats />
-      {/* Swapped: FilthOMeter now comes before Services */}
-   
       <Services />
       <Transformations />
       <Comparison />

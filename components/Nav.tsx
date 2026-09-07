@@ -33,33 +33,33 @@ export default function Nav() {
 
       <header
         className={`fixed top-1.5 inset-x-0 z-50 transition-all duration-300 ${
-          scrolled ? 'py-2' : 'py-4'
+          scrolled ? 'py-1.5 lg:py-2' : 'py-2 lg:py-4'
         }`}
       >
         <div className="max-w-[1440px] mx-auto px-3 lg:px-6">
           <div
             className={`relative bg-white border-2 border-slate-900 rounded-full transition-all duration-300 w-full min-w-0 ${
               scrolled
-                ? 'shadow-[4px_4px_0_0_#0F172A]'
-                : 'shadow-[6px_6px_0_0_#0F172A]'
+                ? 'shadow-[3px_3px_0_0_#0F172A] lg:shadow-[4px_4px_0_0_#0F172A]'
+                : 'shadow-[4px_4px_0_0_#0F172A] lg:shadow-[6px_6px_0_0_#0F172A]'
             }`}
           >
-            <div className="flex items-center justify-between pl-2 pr-2 lg:pl-4 lg:pr-4 py-2">
+            <div className="flex items-center justify-between pl-2 pr-2 lg:pl-4 lg:pr-4 py-1.5 lg:py-2">
 
-              {/* LOGO — slightly larger */}
-              <Link href="/" className="group flex items-center gap-3 shrink-0">
-                <div className="relative w-16 h-16 lg:w-14 lg:h-14 shrink-0 ml-3">
+              {/* LOGO */}
+              <Link href="/" className="group flex items-center gap-2 lg:gap-3 shrink-0">
+                <div className="relative w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 shrink-0 ml-1 lg:ml-3">
                   <Image
                     src="/logo.png"
                     alt="Trident Pressure Washing logo"
                     fill
-                    sizes="80px"
+                    sizes="(max-width: 640px) 40px, 56px"
                     className="object-contain group-hover:scale-105 transition-transform"
                     priority
                   />
                 </div>
                 <div className="leading-none hidden sm:block">
-                  <div className="font-display text-lg lg:text-xl tracking-tight text-slate-900 uppercase">
+                  <div className="font-display text-base lg:text-xl tracking-tight text-slate-900 uppercase">
                     TRIDENT
                   </div>
                   <div className="text-[8px] lg:text-[9px] tracking-[0.3em] text-slate-900/60 uppercase mt-0.5 font-bold">
@@ -109,18 +109,30 @@ export default function Nav() {
                 </Link>
               </div>
 
-              {/* MOBILE TOGGLE */}
-              <button
-                onClick={() => setOpen((v) => !v)}
-                className="lg:hidden w-10 h-10 rounded-full bg-yellow-400 border-2 border-slate-900 text-slate-900 flex items-center justify-center shadow-[2px_2px_0_0_#0F172A]"
-                aria-label="Menu"
-              >
-                {open ? (
-                  <X className="w-4 h-4" strokeWidth={3} />
-                ) : (
-                  <Menu className="w-4 h-4" strokeWidth={3} />
-                )}
-              </button>
+              {/* MOBILE — call + toggle */}
+              <div className="flex items-center gap-2 lg:hidden">
+                <a
+                  href={`tel:${SITE.phoneRaw}`}
+                  aria-label={`Call ${SITE.phone}`}
+                  className="w-9 h-9 rounded-full border-2 border-slate-900 text-white flex items-center justify-center shadow-[2px_2px_0_0_#0F172A]"
+                  style={{ background: 'linear-gradient(135deg, #00B8D9 0%, #0EA5E9 100%)' }}
+                >
+                  <Phone className="w-4 h-4" strokeWidth={2.5} />
+                </a>
+
+                <button
+                  onClick={() => setOpen((v) => !v)}
+                  className="w-9 h-9 rounded-full bg-yellow-400 border-2 border-slate-900 text-slate-900 flex items-center justify-center shadow-[2px_2px_0_0_#0F172A]"
+                  aria-label="Menu"
+                  aria-expanded={open}
+                >
+                  {open ? (
+                    <X className="w-4 h-4" strokeWidth={3} />
+                  ) : (
+                    <Menu className="w-4 h-4" strokeWidth={3} />
+                  )}
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -128,7 +140,7 @@ export default function Nav() {
 
       {/* MOBILE DRAWER */}
       {open && (
-        <div className="fixed inset-0 z-40 lg:hidden bg-white pt-28 px-6 overflow-y-auto">
+        <div className="fixed inset-0 z-40 lg:hidden bg-white pt-24 px-6 overflow-y-auto">
           <div className="absolute bottom-0 inset-x-0">
             <HazardTape className="w-full h-3" />
           </div>

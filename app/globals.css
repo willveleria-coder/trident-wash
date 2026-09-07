@@ -157,16 +157,6 @@ body {
 }
 
 html, body {
-  overflow-x: hidden;
-  max-width: 100vw;
-}
-
-html, body {
-  overflow-x: hidden;
-  max-width: 100%;
-}
-
-html, body {
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100%;
 }

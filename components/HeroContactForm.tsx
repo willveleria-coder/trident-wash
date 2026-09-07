@@ -95,17 +95,14 @@ export default function HeroContactForm() {
 
   return (
     <div className="rounded-3xl border-4 border-[#0F1B2D] bg-white p-6 shadow-[10px_10px_0_0_#0F1B2D] sm:p-8">
-      <div className="mb-6">
-        <span className="inline-block rounded-full border-2 border-[#0F1B2D] bg-[#FFD400] px-3 py-1 text-xs font-black uppercase tracking-widest text-[#0F1B2D]">
-          Free · No obligation
-        </span>
-        <h3 className="mt-4 text-3xl font-black uppercase leading-[0.95] tracking-tight text-[#0F1B2D] sm:text-4xl">
-          Get your quote
-        </h3>
-        <p className="mt-2 text-sm font-semibold text-[#0F1B2D]/60">
-          Fixed price up front. Same-week start.
-        </p>
-      </div>
+     <div className="mb-6">
+  <h3 className="text-3xl font-black uppercase leading-[0.95] tracking-tight text-[#0F1B2D] sm:text-4xl">
+    Get your quote
+  </h3>
+  <p className="mt-2 text-sm font-semibold text-[#0F1B2D]/60">
+    Fixed price up front. Same-week start.
+  </p>
+</div>
 
       <div className="space-y-3">
         <div className="grid gap-3 sm:grid-cols-2">

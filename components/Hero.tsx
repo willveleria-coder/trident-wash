@@ -58,7 +58,7 @@ export default function Hero() {
         }
       `}</style>
 
-      <section className="relative pt-24 lg:pt-28 pb-0" style={{ overflow: 'clip' }}>
+      <section className="relative pt-16 sm:pt-24 lg:pt-28 pb-0" style={{ overflow: 'clip' }}>
 
         {/* ── BG PHOTO ── */}
         <div className="absolute inset-0 z-0">
@@ -103,7 +103,7 @@ export default function Hero() {
           <div className="mx-auto grid max-w-[1500px] grid-cols-1 items-center gap-10 md:grid-cols-[1.1fr_0.9fr] md:gap-8 lg:gap-14 xl:gap-20">
 
             {/* ══════════ LEFT COLUMN ══════════ */}
-            <div className="text-left">
+            <div className="text-center md:text-left">
 
               {/* HEADLINE */}
               <motion.h1
@@ -134,7 +134,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.35 }}
-                className="mt-6 text-sm sm:text-base text-slate-800 max-w-md leading-relaxed font-semibold"
+                className="mt-6 text-sm sm:text-base text-slate-800 max-w-md mx-auto md:mx-0 leading-relaxed font-semibold"
               >
                 Melbourne's most thorough exterior clean. Driveways that look poured yesterday. Roofs that look re-tiled. Guaranteed spotless.
               </motion.p>
@@ -144,7 +144,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="mt-5 flex flex-wrap justify-start gap-2"
+                className="mt-5 flex flex-wrap justify-center md:justify-start gap-2"
               >
                 <MiniStat value="5★" label="Avg rating" color="yellow" />
                 <MiniStat value="Fixed" label="Price always" color="white" />
@@ -156,7 +156,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.65 }}
-                className="mt-5 flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-2.5"
+                className="mt-5 flex flex-col sm:flex-row items-stretch sm:items-center justify-center md:justify-start gap-2.5"
               >
                 <Link
                   href="#free-quote"
@@ -180,7 +180,7 @@ export default function Hero() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.85 }}
-                className="mt-5 hidden sm:flex flex-wrap items-center justify-start gap-x-3.5 gap-y-2 text-[10px] uppercase tracking-[0.12em] text-slate-700"
+                className="mt-5 hidden sm:flex flex-wrap items-center justify-center md:justify-start gap-x-3.5 gap-y-2 text-[10px] uppercase tracking-[0.12em] text-slate-700"
               >
                 <div className="flex items-center gap-1.5">
                   <div className="flex">
