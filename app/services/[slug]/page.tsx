@@ -1,11 +1,3 @@
-/**
- * SAVE AS: app/services/[slug]/page.tsx
- *
- * Generates a real landing page per service at build time. These are the
- * pages that rank for "roof cleaning melbourne" etc — the homepage can only
- * realistically rank for one or two head terms.
- */
-
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -22,9 +14,10 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const service = getService(params.slug);
+  const { slug } = await params;
+  const service = getService(slug);
   if (!service) return {};
 
   return {
@@ -41,8 +34,13 @@ export async function generateMetadata({
   };
 }
 
-export default function ServicePage({ params }: { params: { slug: string } }) {
-  const service = getService(params.slug);
+export default async function ServicePage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const service = getService(slug);
   if (!service) notFound();
 
   const related = SERVICES.filter((s) => s.slug !== service.slug).slice(0, 4);
@@ -61,8 +59,10 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
 
       <article className="bg-white pb-20 pt-28 lg:pt-32">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          {/* Breadcrumb — visible, not just schema. Google uses both. */}
-          <nav aria-label="Breadcrumb" className="mb-8 text-xs font-bold uppercase tracking-widest text-slate-500">
+          <nav
+            aria-label="Breadcrumb"
+            className="mb-8 text-xs font-bold uppercase tracking-widest text-slate-500"
+          >
             <Link href="/" className="hover:text-[#00B8D9]">Home</Link>
             <span className="mx-2">/</span>
             <Link href="/services" className="hover:text-[#00B8D9]">Services</Link>
@@ -86,7 +86,6 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
                 </p>
               )}
 
-              {/* WHAT'S INCLUDED */}
               <h2 className="font-display mt-12 text-2xl font-black tracking-tight text-slate-900 sm:text-3xl">
                 What&rsquo;s included
               </h2>
@@ -99,7 +98,6 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
                 ))}
               </ul>
 
-              {/* FAQ — this is what earns the dropdown boxes in search results */}
               <h2 className="font-display mt-12 text-2xl font-black tracking-tight text-slate-900 sm:text-3xl">
                 {service.name} questions
               </h2>
@@ -112,7 +110,6 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
                 ))}
               </dl>
 
-              {/* AREAS — internal links are how ranking authority spreads */}
               <h2 className="font-display mt-12 text-2xl font-black tracking-tight text-slate-900 sm:text-3xl">
                 {service.name} across Melbourne
               </h2>
@@ -132,7 +129,6 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
                 ))}
               </ul>
 
-              {/* RELATED SERVICES */}
               <h2 className="font-display mt-12 text-2xl font-black tracking-tight text-slate-900 sm:text-3xl">
                 Other services
               </h2>
@@ -151,7 +147,6 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
               </ul>
             </div>
 
-            {/* STICKY QUOTE FORM */}
             <aside className="lg:sticky lg:top-28 lg:self-start">
               <HeroContactForm />
               <a

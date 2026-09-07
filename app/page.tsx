@@ -1,4 +1,3 @@
-import Nav from '@/components/Nav';
 import Hero from '@/components/Hero';
 import BeforeAfter from '@/components/BeforeAfter';
 import Marquee from '@/components/Marquee';
@@ -11,13 +10,10 @@ import Reviews from '@/components/Reviews';
 import Process from '@/components/Process';
 import FAQ from '@/components/FAQ';
 import CTA from '@/components/CTA';
-import Footer from '@/components/Footer';
-
 
 export default function HomePage() {
   return (
     <main className="relative">
-      <Nav />
       <Hero />
       <Marquee />
       <BeforeAfter />
@@ -30,7 +26,6 @@ export default function HomePage() {
       <Process />
       <FAQ />
       <CTA />
-      <Footer />
     </main>
   );
 }

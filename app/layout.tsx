@@ -3,6 +3,8 @@ import { Fraunces, Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { SITE_URL, BUSINESS } from '@/lib/seo';
 import { OrganizationSchema, WebsiteSchema } from '@/components/Schema';
+import Nav from '@/components/Nav';
+import Footer from '@/components/Footer';
 
 const display = Fraunces({
   subsets: ['latin'],
@@ -134,7 +136,9 @@ export default function RootLayout({
       <body className="grain font-sans antialiased bg-ink-900 text-cream-50">
         <OrganizationSchema />
         <WebsiteSchema />
+        <Nav />
         {children}
+        <Footer />
       </body>
     </html>
   );

@@ -3,7 +3,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Instagram, Facebook, Star, Phone, Mail, MapPin, Clock, ArrowUpRight, Zap } from 'lucide-react';
-import { SITE, SERVICES } from '@/lib/data';
+import { SITE } from '@/lib/data';
+import { SERVICES, AREAS } from '@/lib/seo';
 import HazardTape from './HazardTape';
 
 export default function Footer() {
@@ -60,6 +61,7 @@ export default function Footer() {
                 width={160}
                 height={48}
                 className="h-12 w-auto"
+                style={{ width: 'auto', height: 'auto' }}
               />
             </Link>
             <p className="text-slate-500 text-sm leading-relaxed max-w-xs mb-6">
@@ -123,7 +125,7 @@ export default function Footer() {
                     className="group flex items-center gap-1.5 text-slate-600 hover:text-slate-900 transition-colors text-sm font-medium"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-[#00B8D9] group-hover:bg-yellow-400 transition-colors shrink-0" />
-                    {s.title}
+                    {s.name}
                   </Link>
                 </li>
               ))}
@@ -137,16 +139,18 @@ export default function Footer() {
             </div>
             <ul className="space-y-2.5">
               {[
-                { label: 'About us',      href: '/about' },
-                { label: 'Gallery',       href: '/gallery' },
-                { label: 'Blog',          href: '/blog' },
-                { label: 'Contact',       href: '/contact' },
-                { label: 'Free quote',    href: '/#filthometer' },
+                { label: 'About us',       href: '/about' },
+                { label: 'All services',   href: '/services' },
+                { label: 'Service areas',  href: '/areas' },
+                { label: 'Gallery',        href: '/gallery' },
+                { label: 'Blog',           href: '/blog' },
+                { label: 'Contact',        href: '/contact' },
+                { label: 'Free quote',     href: '/#free-quote' },
+                { label: 'Reviews',        href: '/#reviews' },
+                { label: 'Our process',    href: '/#process' },
+                { label: 'FAQ',            href: '/#faq' },
                 { label: 'Privacy policy', href: '/privacy' },
-                { label: 'Terms',         href: '/terms' },
-                { label: 'Reviews',       href: '/#reviews' },
-                { label: 'Our process',   href: '/#process' },
-                { label: 'FAQ',           href: '/#faq' },
+                { label: 'Terms',          href: '/terms' },
               ].map((link) => (
                 <li key={link.href + link.label}>
                   <Link
@@ -203,18 +207,17 @@ export default function Footer() {
             <div className="inline-flex px-3 py-1 bg-[#00B8D9] border-2 border-slate-900 rounded-full text-[9px] tracking-[0.25em] uppercase text-white font-bold mb-4 shadow-[2px_2px_0_0_#0F172A]">
               Service areas
             </div>
+            {/* Real links now — every suburb page gets an internal link from
+                every page on the site, which is how crawl priority spreads. */}
             <div className="flex flex-wrap gap-2">
-              {[
-                'Melbourne CBD', 'Hawthorn', 'Camberwell', 'Brighton',
-                'Bayside', 'Glen Waverley', 'Mornington', 'Frankston',
-                'Doncaster', 'Balwyn', 'Kew', 'Toorak',
-              ].map((area) => (
-                <span
-                  key={area}
-                  className="text-[10px] tracking-wide text-slate-700 bg-slate-100 border-2 border-slate-900 rounded-full px-2.5 py-1 font-bold shadow-[1px_1px_0_0_#0F172A]"
+              {AREAS.map((area) => (
+                <Link
+                  key={area.slug}
+                  href={`/areas/${area.slug}`}
+                  className="text-[10px] tracking-wide text-slate-700 bg-slate-100 border-2 border-slate-900 rounded-full px-2.5 py-1 font-bold shadow-[1px_1px_0_0_#0F172A] hover:bg-yellow-400 hover:text-slate-900 transition-colors"
                 >
-                  {area}
-                </span>
+                  {area.name}
+                </Link>
               ))}
             </div>
           </div>

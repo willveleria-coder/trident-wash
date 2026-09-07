@@ -1,11 +1,8 @@
 import type { MetadataRoute } from 'next';
 import { SITE_URL, SERVICES, AREAS } from '@/lib/seo';
+import { POSTS } from '@/lib/posts';
 
-/**
- * Next.js serves this at /sitemap.xml automatically.
- * Regenerates on every build, so new services and suburbs appear
- * without anyone remembering to update an XML file by hand.
- */
+/** Served at /sitemap.xml — now ~50 URLs. */
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
@@ -13,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: SITE_URL, lastModified: now, changeFrequency: 'weekly', priority: 1 },
     { url: `${SITE_URL}/services`, lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${SITE_URL}/areas`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE_URL}/blog`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${SITE_URL}/gallery`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
     { url: `${SITE_URL}/about`, lastModified: now, changeFrequency: 'yearly', priority: 0.5 },
     { url: `${SITE_URL}/contact`, lastModified: now, changeFrequency: 'yearly', priority: 0.8 },
@@ -32,5 +30,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...servicePages, ...areaPages];
+  const blogPages: MetadataRoute.Sitemap = POSTS.map((p) => ({
+    url: `${SITE_URL}/blog/${p.slug}`,
+    lastModified: new Date(p.date),
+    changeFrequency: 'yearly',
+    priority: 0.6,
+  }));
+
+  return [...staticPages, ...servicePages, ...areaPages, ...blogPages];
 }
