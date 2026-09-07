@@ -6,7 +6,7 @@ export const SITE = {
   phoneRaw: '+61430423564',
   email: 'contact@tridentwash.com.au',
   location: 'Melbourne, VIC, Australia',
-  hours: '7 days, 7am — 7pm',
+hours: 'Open 24/7 · Mon–Sun',
   social: {
     instagram: 'https://www.instagram.com/tridentwashaustralia/',
     facebook: 'https://www.facebook.com/profile.php?id=61560261844850',

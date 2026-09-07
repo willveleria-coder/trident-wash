@@ -1,7 +1,5 @@
 'use client';
 
-import Nav from '@/components/Nav';
-import Footer from '@/components/Footer';
 import CTA from '@/components/CTA';
 import Stats from '@/components/Stats';
 import HazardTape from '@/components/HazardTape';
@@ -64,7 +62,7 @@ const VALUES = [
 export default function AboutPage() {
   return (
     <main>
-      <Nav />
+
 
       {/* ── HERO ─────────────────────────────────────────────── */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-white overflow-hidden">
@@ -350,7 +348,6 @@ export default function AboutPage() {
       <Stats />
 
       <CTA />
-      <Footer />
     </main>
   );
 }

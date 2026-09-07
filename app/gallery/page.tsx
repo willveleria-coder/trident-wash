@@ -3,34 +3,29 @@
 import { motion } from 'framer-motion';
 import { Sparkles, Star, ArrowUpRight, Zap } from 'lucide-react';
 import Link from 'next/link';
-import Nav from '@/components/Nav';
-import Footer from '@/components/Footer';
-import Transformations from '@/components/Transformations';
 import HazardTape from '@/components/HazardTape';
 import BeforeAfterSlider from '@/components/BeforeAfterSlider';
 
 const FEATURED = [
   {
     beforeSrc: '/3.png',
-  afterSrc: '/4.png',
-  title: 'Before & After',
-  desc: 'A complete transformation — see the difference for yourself.',
-  variant: 'yellow' as const,
-},
+    afterSrc: '/4.png',
+    title: 'Before & After',
+    desc: 'A complete transformation — see the difference for yourself.',
+    variant: 'yellow' as const,
+  },
   {
-  beforeSrc: '/1.png',
-  afterSrc: '/2.png',
-  title: 'Before & After',
-  desc: 'A complete transformation — see the difference for yourself.',
-  variant: 'yellow' as const,
-},
+    beforeSrc: '/1.png',
+    afterSrc: '/2.png',
+    title: 'Before & After',
+    desc: 'A complete transformation — see the difference for yourself.',
+    variant: 'yellow' as const,
+  },
 ];
 
 export default function GalleryPage() {
   return (
     <main className="bg-white">
-      <Nav />
-
       {/* ── HERO ── */}
       <section className="relative pt-32 pb-24 bg-white overflow-hidden">
         {/* Glow blobs */}
@@ -101,7 +96,7 @@ export default function GalleryPage() {
           >
             Real properties. Real photos.{' '}
             <span className="font-bold">No stock images, no agency b-roll.</span> Every job
-            below is work we've done.
+            below is work we&apos;ve done.
           </motion.p>
 
           {/* Mini stats */}
@@ -112,7 +107,7 @@ export default function GalleryPage() {
             className="mt-10 flex flex-wrap justify-center gap-3"
           >
             <div className="bg-yellow-400 border-2 border-slate-900 rounded-2xl px-5 py-3 shadow-[4px_4px_0_0_#0F172A] -rotate-1">
-              <div className="font-display text-2xl leading-none text-slate-900">20+</div>
+              <div className="font-display text-2xl leading-none text-slate-900">30+</div>
               <div className="text-[9px] tracking-[0.2em] uppercase font-bold text-slate-900/70 mt-1">
                 Five-star jobs
               </div>
@@ -124,7 +119,7 @@ export default function GalleryPage() {
               </div>
             </div>
             <div className="bg-white border-2 border-slate-900 rounded-2xl px-5 py-3 shadow-[4px_4px_0_0_#0F172A] -rotate-1">
-              <div className="font-display text-2xl leading-none text-slate-900">4.7★</div>
+              <div className="font-display text-2xl leading-none text-slate-900">5.0★</div>
               <div className="text-[9px] tracking-[0.2em] uppercase font-bold text-slate-500 mt-1">
                 Google rating
               </div>
@@ -268,11 +263,6 @@ export default function GalleryPage() {
         </div>
       </section>
 
-  
-
-      {/* ── TRANSFORMATIONS SCROLL SECTION ── */}
-      <Transformations />
-
       {/* ── BOTTOM CTA ── */}
       <section className="relative py-24 lg:py-32 bg-white overflow-hidden">
         <div className="relative max-w-[1440px] mx-auto px-6 lg:px-10">
@@ -291,7 +281,7 @@ export default function GalleryPage() {
                     <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                   ))}
                   <span className="text-yellow-400 text-[10px] tracking-[0.3em] uppercase font-bold">
-                    50+ five-star jobs
+                    30+ five-star reviews
                   </span>
                 </div>
                 <div className="font-display text-4xl lg:text-6xl tracking-tightest text-white leading-[0.92]">
@@ -309,7 +299,7 @@ export default function GalleryPage() {
                   </span>
                 </div>
                 <p className="mt-5 text-white/70 text-base lg:text-lg max-w-md leading-relaxed">
-                  Send a couple of photos through and we'll send back a fixed quote — same day,
+                  Send a couple of photos through and we&apos;ll send back a fixed quote — same day,
                   every time.
                 </p>
               </div>
@@ -333,15 +323,13 @@ export default function GalleryPage() {
                   <ArrowUpRight className="w-5 h-5 transition-transform group-hover:rotate-45" />
                 </Link>
                 <div className="text-center text-xs text-white/50 tracking-wider mt-1">
-                  Avg quote returned in 2 hours during business days
+                  Quotes usually returned within a couple of hours
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      <Footer />
     </main>
   );
 }

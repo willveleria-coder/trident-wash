@@ -177,11 +177,11 @@ export default function ContactPage() {
                   aria-hidden
                   className="absolute -top-3 -right-3 w-full h-full bg-yellow-400 rounded-3xl border-2 border-slate-900 hidden lg:block"
                 />
-                <div className="relative bg-slate-900 rounded-3xl border-2 border-slate-900 overflow-hidden">
+                               <div className="relative bg-[#E0F7FC] rounded-3xl border-2 border-slate-900 overflow-hidden">
                   <HazardTape className="w-full h-2" />
 
                   <div className="p-6 lg:p-8 space-y-5">
-                    <div className="text-[10px] tracking-[0.3em] uppercase text-yellow-400 font-bold mb-2">
+                    <div className="text-[10px] tracking-[0.3em] uppercase text-[#0284A8] font-bold mb-2">
                       ◆ Quote request
                     </div>
 
@@ -195,15 +195,15 @@ export default function ContactPage() {
                         <div className="w-16 h-16 rounded-full bg-yellow-400 border-2 border-slate-900 flex items-center justify-center">
                           <CheckCircle className="w-8 h-8 text-slate-900" strokeWidth={2.5} />
                         </div>
-                        <div className="font-display text-3xl text-white leading-tight">
+                        <div className="font-display text-3xl text-slate-900 leading-tight">
                           Request sent!
                         </div>
-                        <p className="text-white/60 text-sm max-w-xs">
+                        <p className="text-slate-600 text-sm max-w-xs">
                           We&apos;ll be in touch within a few hours with your quote. Talk soon! 👊
                         </p>
                         <button
                           onClick={() => setStatus('idle')}
-                          className="mt-2 text-yellow-400 text-xs font-bold tracking-widest uppercase underline underline-offset-4"
+                          className="mt-2 text-[#0284A8] text-xs font-bold tracking-widest uppercase underline underline-offset-4"
                         >
                           Send another
                         </button>
@@ -211,7 +211,7 @@ export default function ContactPage() {
                     ) : (
                       <>
                         <div>
-                          <label className="text-[10px] tracking-[0.3em] uppercase text-white/50 font-bold block mb-2">
+                          <label className="text-[10px] tracking-[0.3em] uppercase text-slate-600 font-bold block mb-2">
                             Your name *
                           </label>
                           <input
@@ -219,13 +219,14 @@ export default function ContactPage() {
                             placeholder="Jane Smith"
                             value={form.name}
                             onChange={(e) => update('name', e.target.value)}
-                            className="w-full bg-white/5 border-2 border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-yellow-400 transition-colors placeholder:text-white/20 font-medium"
+                            style={{ fontSize: '16px' }}
+                            className="w-full bg-white border-2 border-slate-900 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-[#00B8D9] focus:ring-4 focus:ring-[#00B8D9]/25 transition-all placeholder:text-slate-400 font-medium"
                           />
                         </div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           <div>
-                            <label className="text-[10px] tracking-[0.3em] uppercase text-white/50 font-bold block mb-2">
+                            <label className="text-[10px] tracking-[0.3em] uppercase text-slate-600 font-bold block mb-2">
                               Phone *
                             </label>
                             <input
@@ -233,25 +234,27 @@ export default function ContactPage() {
                               placeholder="0400 000 000"
                               value={form.phone}
                               onChange={(e) => update('phone', e.target.value)}
-                              className="w-full bg-white/5 border-2 border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-yellow-400 transition-colors placeholder:text-white/20 font-medium"
+                              style={{ fontSize: '16px' }}
+                              className="w-full bg-white border-2 border-slate-900 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-[#00B8D9] focus:ring-4 focus:ring-[#00B8D9]/25 transition-all placeholder:text-slate-400 font-medium"
                             />
                           </div>
                           <div>
-                            <label className="text-[10px] tracking-[0.3em] uppercase text-white/50 font-bold block mb-2">
+                            <label className="text-[10px] tracking-[0.3em] uppercase text-slate-600 font-bold block mb-2">
                               Suburb
                             </label>
                             <input
                               type="text"
-                              placeholder="Brighton"
+                              placeholder="Templestowe"
                               value={form.suburb}
                               onChange={(e) => update('suburb', e.target.value)}
-                              className="w-full bg-white/5 border-2 border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-yellow-400 transition-colors placeholder:text-white/20 font-medium"
+                              style={{ fontSize: '16px' }}
+                              className="w-full bg-white border-2 border-slate-900 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-[#00B8D9] focus:ring-4 focus:ring-[#00B8D9]/25 transition-all placeholder:text-slate-400 font-medium"
                             />
                           </div>
                         </div>
 
                         <div>
-                          <label className="text-[10px] tracking-[0.3em] uppercase text-white/50 font-bold block mb-2">
+                          <label className="text-[10px] tracking-[0.3em] uppercase text-slate-600 font-bold block mb-2">
                             What needs cleaning? *
                           </label>
                           <textarea
@@ -259,14 +262,15 @@ export default function ContactPage() {
                             placeholder="Driveway, house, roof… give us the details"
                             value={form.message}
                             onChange={(e) => update('message', e.target.value)}
-                            className="w-full bg-white/5 border-2 border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-yellow-400 transition-colors placeholder:text-white/20 resize-none font-medium"
+                            style={{ fontSize: '16px' }}
+                            className="w-full bg-white border-2 border-slate-900 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-[#00B8D9] focus:ring-4 focus:ring-[#00B8D9]/25 transition-all placeholder:text-slate-400 resize-none font-medium"
                           />
                         </div>
 
                         {status === 'error' && (
-                          <div className="flex items-center gap-2 bg-red-500/10 border border-red-500/30 rounded-xl px-4 py-3">
-                            <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
-                            <p className="text-red-400 text-sm font-medium">{errorMsg}</p>
+                          <div className="flex items-center gap-2 bg-red-50 border-2 border-red-300 rounded-xl px-4 py-3">
+                            <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
+                            <p className="text-red-700 text-sm font-medium">{errorMsg}</p>
                           </div>
                         )}
 
@@ -274,7 +278,7 @@ export default function ContactPage() {
                           type="button"
                           onClick={handleSubmit}
                           disabled={status === 'loading'}
-                          className="group w-full flex items-center justify-between gap-3 px-6 py-4 bg-yellow-400 text-slate-900 font-bold rounded-2xl border-2 border-slate-900 hover:translate-x-0.5 hover:translate-y-0.5 transition-all text-base disabled:opacity-60 disabled:cursor-not-allowed"
+                          className="group w-full flex items-center justify-between gap-3 px-6 py-4 bg-yellow-400 text-slate-900 font-bold rounded-2xl border-2 border-slate-900 shadow-[4px_4px_0_0_#0F172A] hover:shadow-[1px_1px_0_0_#0F172A] hover:translate-x-0.5 hover:translate-y-0.5 transition-all text-base disabled:opacity-60 disabled:cursor-not-allowed"
                         >
                           <span className="flex items-center gap-2">
                             <Send className="w-4 h-4" strokeWidth={2.5} />
@@ -283,8 +287,8 @@ export default function ContactPage() {
                           <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
                         </button>
 
-                        <p className="text-[11px] text-white/30 text-center font-medium tracking-wide">
-                          We reply within a few hours during business days.
+                        <p className="text-[11px] text-slate-500 text-center font-medium tracking-wide">
+                          We reply within a few hours, any day of the week.
                         </p>
                       </>
                     )}

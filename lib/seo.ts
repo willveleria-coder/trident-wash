@@ -31,9 +31,12 @@ export const BUSINESS = {
     facebook: '',
     instagram: '',
   },
-  hours: [
-    { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], open: '07:00', close: '18:00' },
-    { days: ['Saturday'], open: '08:00', close: '16:00' },
+    hours: [
+    {
+      days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      open: '00:00',
+      close: '23:59',
+    },
   ],
 } as const;
 
@@ -499,116 +502,12 @@ export type Area = {
 
 export const AREAS: Area[] = [
   {
-    slug: 'point-cook',
-    name: 'Point Cook',
-    region: 'Western Suburbs',
-    blurb: 'Pressure washing, roof and driveway cleaning in Point Cook.',
+    slug: 'templestowe',
+    name: 'Templestowe',
+    region: 'North East',
+    blurb: 'Pressure washing, roof and gutter cleaning in Templestowe.',
     local:
-      'Point Cook is coastal enough that salt spray accelerates staining on west-facing render, and most estates here are new builds with exposed aggregate driveways that mark easily.',
-  },
-  {
-    slug: 'werribee',
-    name: 'Werribee',
-    region: 'Western Suburbs',
-    blurb: 'Pressure washing, gutter and roof cleaning in Werribee.',
-    local:
-      'Older Werribee homes tend to have concrete tile roofs carrying heavy lichen, and the clay soils mean driveways here pick up more red staining than most of Melbourne.',
-  },
-  {
-    slug: 'tarneit',
-    name: 'Tarneit',
-    region: 'Western Suburbs',
-    blurb: 'Driveway, house and solar panel cleaning in Tarneit.',
-    local:
-      'Tarneit is largely newer estates with light-coloured render that shows road grime quickly, and its open, dusty aspect means solar panels lose output faster than in leafier suburbs.',
-  },
-  {
-    slug: 'hoppers-crossing',
-    name: 'Hoppers Crossing',
-    region: 'Western Suburbs',
-    blurb: 'Pressure washing and gutter cleaning in Hoppers Crossing.',
-    local:
-      'Hoppers Crossing has a mix of 80s brick homes and newer builds, so we see both efflorescence on older brickwork and mould on newer rendered facades.',
-  },
-  {
-    slug: 'altona',
-    name: 'Altona',
-    region: 'Western Suburbs',
-    blurb: 'Exterior cleaning, roof soft washing and window cleaning in Altona.',
-    local:
-      'Altona sits right on the bay, and the salt air is hard on Colorbond roofing and window frames — soft washing matters more here than almost anywhere in Melbourne.',
-  },
-  {
-    slug: 'williamstown',
-    name: 'Williamstown',
-    region: 'Western Suburbs',
-    blurb: 'House washing, render and roof cleaning in Williamstown.',
-    local:
-      'Williamstown has a lot of heritage weatherboard and period brick, which needs gentler treatment than the render-and-slab construction further west.',
-  },
-  {
-    slug: 'footscray',
-    name: 'Footscray',
-    region: 'Inner West',
-    blurb: 'Commercial and residential pressure washing in Footscray.',
-    local:
-      'Footscray mixes dense residential with retail strip frontages, so a lot of our work here is after-hours shopfront and awning cleaning alongside home jobs.',
-  },
-  {
-    slug: 'sunshine',
-    name: 'Sunshine',
-    region: 'Western Suburbs',
-    blurb: 'Driveway, roof and gutter cleaning in Sunshine.',
-    local:
-      'Sunshine has a high proportion of post-war brick homes with original concrete driveways — decades of oil staining is the norm rather than the exception.',
-  },
-  {
-    slug: 'melton',
-    name: 'Melton',
-    region: 'Western Suburbs',
-    blurb: 'Pressure washing and solar panel cleaning in Melton.',
-    local:
-      'Melton is dry, dusty and open, which is hard on solar panels and means driveways pick up a fine grit film that a rinse alone will not shift.',
-  },
-  {
-    slug: 'caroline-springs',
-    name: 'Caroline Springs',
-    region: 'Western Suburbs',
-    blurb: 'House washing and driveway cleaning in Caroline Springs.',
-    local:
-      'Caroline Springs is almost entirely rendered estate housing, so render soft washing and paved driveway cleaning make up most of what we do here.',
-  },
-  {
-    slug: 'geelong',
-    name: 'Geelong',
-    region: 'Regional Victoria',
-    blurb: 'Pressure washing, roof and gutter cleaning in Geelong.',
-    local:
-      'Geelong combines coastal salt exposure with older housing stock, so roofs and render here carry both salt damage and established lichen growth.',
-  },
-  {
-    slug: 'brighton',
-    name: 'Brighton',
-    region: 'Bayside',
-    blurb: 'Premium house washing, window and roof cleaning in Brighton.',
-    local:
-      'Brighton properties are typically larger period homes with slate or terracotta roofing and extensive glazing, which means soft washing and water-fed pole work rather than pressure.',
-  },
-  {
-    slug: 'st-kilda',
-    name: 'St Kilda',
-    region: 'Bayside',
-    blurb: 'Residential and commercial exterior cleaning in St Kilda.',
-    local:
-      'St Kilda is dense, mostly heritage, and heavily commercial along the foreshore — a lot of our work here is hospitality frontages and apartment common areas.',
-  },
-  {
-    slug: 'richmond',
-    name: 'Richmond',
-    region: 'Inner East',
-    blurb: 'Commercial pressure washing and window cleaning in Richmond.',
-    local:
-      'Richmond has narrow-frontage terraces and busy retail strips, so access is tight and most commercial work happens before trading hours.',
+      'Templestowe blocks are large and heavily treed, which means long gutter runs under mature gums and roofs that hold moss on the shaded southern pitch.',
   },
   {
     slug: 'box-hill',
@@ -616,15 +515,71 @@ export const AREAS: Area[] = [
     region: 'Eastern Suburbs',
     blurb: 'Gutter, roof and house cleaning in Box Hill.',
     local:
-      'Box Hill is leafy with mature street trees, which makes it one of our busiest suburbs for gutter cleaning — often twice a year rather than annually.',
+      'Box Hill has dense street tree cover, which makes it one of our busiest suburbs for gutter cleaning — most homes here need it twice a year rather than annually.',
   },
   {
-    slug: 'glen-waverley',
-    name: 'Glen Waverley',
+    slug: 'balwyn',
+    name: 'Balwyn',
     region: 'Eastern Suburbs',
-    blurb: 'House washing, roof and solar panel cleaning in Glen Waverley.',
+    blurb: 'House washing, render and roof cleaning in Balwyn.',
     local:
-      'Glen Waverley has heavy tree cover and a high rate of solar installation, so panels here collect leaf debris and shade grime faster than average.',
+      'Balwyn is largely period homes with slate and terracotta roofing plus established gardens, so it is soft wash work rather than pressure on almost every job.',
+  },
+  {
+    slug: 'mont-albert',
+    name: 'Mont Albert',
+    region: 'Eastern Suburbs',
+    blurb: 'Roof cleaning, gutters and house washing in Mont Albert.',
+    local:
+      'Mont Albert has a lot of original interwar brick with tile roofs that after decades carry heavy lichen — the kind that needs treating at the root, not blasting off.',
+  },
+  {
+    slug: 'montmorency',
+    name: 'Montmorency',
+    region: 'North East',
+    blurb: 'Gutter cleaning, roof soft washing and driveways in Montmorency.',
+    local:
+      'Montmorency sits in bushy, sloping terrain with significant gum coverage, so gutters fill year round rather than seasonally and roofs grow moss fast.',
+  },
+  {
+    slug: 'eltham',
+    name: 'Eltham',
+    region: 'North East',
+    blurb: 'Roof, gutter and exterior cleaning in Eltham.',
+    local:
+      'Eltham is heavily wooded with a lot of mudbrick and timber homes, which means gentle methods and gutters that need clearing more often than almost anywhere we work.',
+  },
+  {
+    slug: 'warrandyte',
+    name: 'Warrandyte',
+    region: 'North East',
+    blurb: 'Gutter cleaning, roof and house washing in Warrandyte.',
+    local:
+      'Warrandyte is bushfire-prone with dense native cover, so gutter clearing here is a genuine safety item and we clear the full run rather than just the visible sections.',
+  },
+  {
+    slug: 'donvale',
+    name: 'Donvale',
+    region: 'Eastern Suburbs',
+    blurb: 'Roof soft washing, gutters and driveways in Donvale.',
+    local:
+      'Donvale blocks are large and leafy with long driveways, and the tree cover means tannin staining on concrete is the most common thing we get called about.',
+  },
+  {
+    slug: 'doncaster',
+    name: 'Doncaster',
+    region: 'Eastern Suburbs',
+    blurb: 'House washing, roof and solar panel cleaning in Doncaster.',
+    local:
+      'Doncaster has a high rate of solar installation alongside a mix of older brick and newer render, so panels and shaded walls are our two biggest jobs here.',
+  },
+  {
+    slug: 'bulleen',
+    name: 'Bulleen',
+    region: 'North East',
+    blurb: 'Pressure washing, gutter and roof cleaning in Bulleen.',
+    local:
+      'Bulleen sits along the Yarra flats where humidity stays high, and that shows up as persistent mould on south-facing render and brickwork.',
   },
   {
     slug: 'ringwood',
@@ -632,55 +587,71 @@ export const AREAS: Area[] = [
     region: 'Eastern Suburbs',
     blurb: 'Roof soft washing and gutter cleaning in Ringwood.',
     local:
-      'Ringwood sits at the edge of the ranges with significant gum coverage, so moss on roofs and blocked gutters are the two jobs we do most here.',
+      'Ringwood is at the edge of the ranges with heavy gum coverage, so moss on roofs and blocked gutters are the two jobs we do most here.',
   },
   {
-    slug: 'dandenong',
-    name: 'Dandenong',
-    region: 'South East',
-    blurb: 'Commercial and residential pressure washing in Dandenong.',
+    slug: 'blackburn',
+    name: 'Blackburn',
+    region: 'Eastern Suburbs',
+    blurb: 'Gutter, roof and driveway cleaning in Blackburn.',
     local:
-      'Dandenong has a large industrial and warehouse base, so much of our work here is loading docks, forecourts and factory frontages rather than homes.',
+      'Blackburn is known for its tree canopy, which is lovely to live under and hard on gutters — most properties here need clearing after autumn and again before storm season.',
   },
   {
-    slug: 'frankston',
-    name: 'Frankston',
-    region: 'South East',
-    blurb: 'Exterior cleaning, roof and driveway washing in Frankston.',
+    slug: 'mitcham',
+    name: 'Mitcham',
+    region: 'Eastern Suburbs',
+    blurb: 'Pressure washing, roof and house cleaning in Mitcham.',
     local:
-      'Frankston is coastal with a mix of older brick and newer builds — salt exposure on the bay side and heavy driveway staining in the older streets inland.',
+      'Mitcham has a lot of post-war brick homes with original concrete driveways, which means decades of oil staining and lichen that needs pre-treating.',
   },
   {
-    slug: 'berwick',
-    name: 'Berwick',
-    region: 'South East',
-    blurb: 'House washing and driveway cleaning in Berwick.',
+    slug: 'nunawading',
+    name: 'Nunawading',
+    region: 'Eastern Suburbs',
+    blurb: 'Driveway, gutter and roof cleaning in Nunawading.',
     local:
-      'Berwick estates are predominantly rendered with paved driveways, and the area gets enough rainfall to keep mould active on shaded elevations year round.',
+      'Nunawading mixes established residential with a commercial strip along Whitehorse Road, so we do both home jobs and after-hours shopfront work here.',
   },
   {
-    slug: 'craigieburn',
-    name: 'Craigieburn',
-    region: 'Northern Suburbs',
-    blurb: 'Driveway, solar panel and house cleaning in Craigieburn.',
+    slug: 'ivanhoe',
+    name: 'Ivanhoe',
+    region: 'North East',
+    blurb: 'House washing, roof and window cleaning in Ivanhoe.',
     local:
-      'Craigieburn is exposed and dusty like Melton, and its newer estate housing means light render and exposed aggregate that show grime quickly.',
+      'Ivanhoe is period housing with mature gardens — heritage brick, slate roofing and shaded south walls that grow mould persistently through winter.',
   },
   {
-    slug: 'preston',
-    name: 'Preston',
-    region: 'Northern Suburbs',
-    blurb: 'Pressure washing, roof and gutter cleaning in Preston.',
+    slug: 'heidelberg',
+    name: 'Heidelberg',
+    region: 'North East',
+    blurb: 'Pressure washing, gutters and render cleaning in Heidelberg.',
     local:
-      'Preston has a lot of original post-war housing with concrete tile roofs, which after fifty years carry serious lichen growth needing soft wash rather than pressure.',
+      'Heidelberg has a wide mix of older brick and newer infill development, so we see everything from efflorescence on original walls to mould on fresh render.',
   },
   {
-    slug: 'essendon',
-    name: 'Essendon',
-    region: 'Northern Suburbs',
-    blurb: 'House washing, window and roof cleaning in Essendon.',
+    slug: 'greensborough',
+    name: 'Greensborough',
+    region: 'North East',
+    blurb: 'Roof, gutter and driveway cleaning in Greensborough.',
     local:
-      'Essendon is period housing with established gardens — a lot of heritage brick, slate roofing and shaded south walls that grow mould persistently.',
+      'Greensborough is hilly with substantial native tree cover, which means steep roof access and gutters that fill with gum debris rather than deciduous leaf.',
+  },
+  {
+    slug: 'diamond-creek',
+    name: 'Diamond Creek',
+    region: 'North East',
+    blurb: 'Gutter cleaning, roof soft washing and house washing in Diamond Creek.',
+    local:
+      'Diamond Creek is semi-rural with larger blocks and heavy bush, so gutter clearing is both a maintenance and a fire-safety job for most properties here.',
+  },
+  {
+    slug: 'plenty',
+    name: 'Plenty',
+    region: 'North East',
+    blurb: 'Exterior cleaning, roof and driveway washing in Plenty.',
+    local:
+      'Plenty has large semi-rural properties with long driveways and open aspects, so we see more dust film on solar panels and more surface area per job than in the suburbs.',
   },
 ];
 

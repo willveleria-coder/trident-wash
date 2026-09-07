@@ -5,7 +5,6 @@ import Stats from '@/components/Stats';
 import Services from '@/components/Services';
 import SuburbMap from '@/components/SuburbMap';
 import Comparison from '@/components/Comparison';
-import Transformations from '@/components/Transformations';
 import Reviews from '@/components/Reviews';
 import Process from '@/components/Process';
 import FAQ from '@/components/FAQ';
@@ -17,12 +16,11 @@ export default function HomePage() {
       <Hero />
       <Marquee />
       <BeforeAfter />
+      <Reviews />
       <Stats />
       <Services />
-      <Transformations />
       <Comparison />
       <SuburbMap />
-      <Reviews />
       <Process />
       <FAQ />
       <CTA />

@@ -107,8 +107,8 @@ export default function Footer() {
                 ))}
               </div>
               <span className="text-xs text-slate-900 font-bold tracking-wide">
-                5.0 · 20+ Google reviews
-              </span>
+  5.0 · 30+ Google reviews
+</span>
             </div>
           </div>
 
@@ -219,6 +219,20 @@ export default function Footer() {
                   {area.name}
                 </Link>
               ))}
+                          <div className="flex flex-wrap gap-2">
+              {AREAS.map((area) => (
+                <Link
+                  key={area.slug}
+                  href={`/areas/${area.slug}`}
+                  className="text-[10px] tracking-wide text-slate-700 bg-slate-100 border-2 border-slate-900 rounded-full px-2.5 py-1 font-bold shadow-[1px_1px_0_0_#0F172A] hover:bg-yellow-400 hover:text-slate-900 transition-colors"
+                >
+                  {area.name}
+                </Link>
+              ))}
+              <span className="self-center px-2.5 py-1 text-[10px] font-bold tracking-wide text-slate-500">
+                and more — just ask
+              </span>
+            </div>
             </div>
           </div>
         </div>
