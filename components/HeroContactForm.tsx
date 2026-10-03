@@ -17,6 +17,7 @@ export default function HeroContactForm() {
   const [form, setForm] = useState({
     name: '',
     phone: '',
+    address: '',
     suburb: '',
     service: '',
     notes: '',
@@ -40,10 +41,7 @@ export default function HeroContactForm() {
     setErrorMsg('')
 
     // message is required by the API — always build something non-empty
-    const message = [
-      form.service ? `Service: ${form.service}` : null,
-      form.notes.trim() || null,
-    ]
+    const message = [form.service ? `Service: ${form.service}` : null, form.notes.trim() || null]
       .filter(Boolean)
       .join('\n\n')
 
@@ -55,13 +53,15 @@ export default function HeroContactForm() {
           type: 'quote',
           name: form.name.trim(),
           phone: form.phone.trim(),
+          address: form.address.trim() || undefined,
           suburb: form.suburb.trim() || undefined,
+          service: form.service || undefined,
           message,
         }),
       })
       if (!res.ok) throw new Error()
       setStatus('sent')
-      setForm({ name: '', phone: '', suburb: '', service: '', notes: '' })
+      setForm({ name: '', phone: '', address: '', suburb: '', service: '', notes: '' })
     } catch {
       setErrorMsg('Something went wrong. Give us a call on 0430 423 564.')
       setStatus('error')
@@ -77,12 +77,8 @@ export default function HeroContactForm() {
         <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full border-4 border-[#0F1B2D] bg-[#FFD400] text-3xl font-black">
           ✓
         </div>
-        <h3 className="text-3xl font-black uppercase tracking-tight text-[#0F1B2D]">
-          Request received
-        </h3>
-        <p className="mt-3 font-semibold text-[#0F1B2D]/70">
-          We'll be in touch shortly — usually the same day.
-        </p>
+        <h3 className="text-3xl font-black uppercase tracking-tight text-[#0F1B2D]">Request received</h3>
+        <p className="mt-3 font-semibold text-[#0F1B2D]/70">We'll be in touch shortly — usually the same day.</p>
         <button
           onClick={() => setStatus('idle')}
           className="mt-6 text-sm font-bold uppercase tracking-wide text-[#29ABE2] underline underline-offset-4"
@@ -95,14 +91,12 @@ export default function HeroContactForm() {
 
   return (
     <div className="rounded-3xl border-4 border-[#0F1B2D] bg-white p-6 shadow-[10px_10px_0_0_#0F1B2D] sm:p-8">
-     <div className="mb-6">
-  <h3 className="text-3xl font-black uppercase leading-[0.95] tracking-tight text-[#0F1B2D] sm:text-4xl">
-    Get your quote
-  </h3>
-  <p className="mt-2 text-sm font-semibold text-[#0F1B2D]/60">
-    Fixed price up front. Same-week start.
-  </p>
-</div>
+      <div className="mb-6">
+        <h3 className="text-3xl font-black uppercase leading-[0.95] tracking-tight text-[#0F1B2D] sm:text-4xl">
+          Get your quote
+        </h3>
+        <p className="mt-2 text-sm font-semibold text-[#0F1B2D]/60">Fixed price up front. Same-week start.</p>
+      </div>
 
       <div className="space-y-3">
         <div className="grid gap-3 sm:grid-cols-2">
@@ -110,6 +104,7 @@ export default function HeroContactForm() {
             className={inputClass}
             style={{ fontSize: '16px' }}
             placeholder="Name *"
+            autoComplete="name"
             value={form.name}
             onChange={(e) => update('name', e.target.value)}
           />
@@ -118,19 +113,31 @@ export default function HeroContactForm() {
             style={{ fontSize: '16px' }}
             type="tel"
             inputMode="tel"
+            autoComplete="tel"
             placeholder="Phone *"
             value={form.phone}
             onChange={(e) => update('phone', e.target.value)}
           />
         </div>
 
-        <input
-          className={inputClass}
-          style={{ fontSize: '16px' }}
-          placeholder="Suburb"
-          value={form.suburb}
-          onChange={(e) => update('suburb', e.target.value)}
-        />
+        <div className="grid gap-3 sm:grid-cols-[1.6fr_1fr]">
+          <input
+            className={inputClass}
+            style={{ fontSize: '16px' }}
+            placeholder="Street address"
+            autoComplete="street-address"
+            value={form.address}
+            onChange={(e) => update('address', e.target.value)}
+          />
+          <input
+            className={inputClass}
+            style={{ fontSize: '16px' }}
+            placeholder="Suburb"
+            autoComplete="address-level2"
+            value={form.suburb}
+            onChange={(e) => update('suburb', e.target.value)}
+          />
+        </div>
 
         <select
           className={inputClass}
@@ -155,9 +162,7 @@ export default function HeroContactForm() {
           onChange={(e) => update('notes', e.target.value)}
         />
 
-        {status === 'error' && (
-          <p className="text-sm font-bold text-red-600">{errorMsg}</p>
-        )}
+        {status === 'error' && <p className="text-sm font-bold text-red-600">{errorMsg}</p>}
 
         <button
           onClick={submit}

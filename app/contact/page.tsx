@@ -9,8 +9,14 @@ import { motion } from 'framer-motion';
 import { SITE } from '@/lib/data';
 import { Phone, Mail, MapPin, Clock, ArrowRight, Sparkles, Send, CheckCircle, AlertCircle } from 'lucide-react';
 
+const EMPTY = { name: '', phone: '', email: '', address: '', suburb: '', message: '' };
+
+const inputClass =
+  'w-full bg-white border-2 border-slate-900 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-[#00B8D9] focus:ring-4 focus:ring-[#00B8D9]/25 transition-all placeholder:text-slate-400 font-medium';
+const labelClass = 'text-[10px] tracking-[0.3em] uppercase text-slate-600 font-bold block mb-2';
+
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: '', phone: '', suburb: '', message: '' });
+  const [form, setForm] = useState(EMPTY);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
 
@@ -31,12 +37,20 @@ export default function ContactPage() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          type: 'contact',
+          name: form.name.trim(),
+          phone: form.phone.trim(),
+          email: form.email.trim() || undefined,
+          address: form.address.trim() || undefined,
+          suburb: form.suburb.trim() || undefined,
+          message: form.message.trim(),
+        }),
       });
 
       if (!res.ok) throw new Error('Failed');
       setStatus('success');
-      setForm({ name: '', phone: '', suburb: '', message: '' });
+      setForm(EMPTY);
     } catch {
       setErrorMsg('Something went wrong. Please try calling us directly.');
       setStatus('error');
@@ -177,7 +191,7 @@ export default function ContactPage() {
                   aria-hidden
                   className="absolute -top-3 -right-3 w-full h-full bg-yellow-400 rounded-3xl border-2 border-slate-900 hidden lg:block"
                 />
-                               <div className="relative bg-[#E0F7FC] rounded-3xl border-2 border-slate-900 overflow-hidden">
+                <div className="relative bg-[#E0F7FC] rounded-3xl border-2 border-slate-900 overflow-hidden">
                   <HazardTape className="w-full h-2" />
 
                   <div className="p-6 lg:p-8 space-y-5">
@@ -211,59 +225,89 @@ export default function ContactPage() {
                     ) : (
                       <>
                         <div>
-                          <label className="text-[10px] tracking-[0.3em] uppercase text-slate-600 font-bold block mb-2">
-                            Your name *
-                          </label>
+                          <label htmlFor="c-name" className={labelClass}>Your name *</label>
                           <input
+                            id="c-name"
                             type="text"
+                            autoComplete="name"
                             placeholder="Jane Smith"
                             value={form.name}
                             onChange={(e) => update('name', e.target.value)}
                             style={{ fontSize: '16px' }}
-                            className="w-full bg-white border-2 border-slate-900 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-[#00B8D9] focus:ring-4 focus:ring-[#00B8D9]/25 transition-all placeholder:text-slate-400 font-medium"
+                            className={inputClass}
                           />
                         </div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           <div>
-                            <label className="text-[10px] tracking-[0.3em] uppercase text-slate-600 font-bold block mb-2">
-                              Phone *
-                            </label>
+                            <label htmlFor="c-phone" className={labelClass}>Phone *</label>
                             <input
+                              id="c-phone"
                               type="tel"
+                              inputMode="tel"
+                              autoComplete="tel"
                               placeholder="0400 000 000"
                               value={form.phone}
                               onChange={(e) => update('phone', e.target.value)}
                               style={{ fontSize: '16px' }}
-                              className="w-full bg-white border-2 border-slate-900 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-[#00B8D9] focus:ring-4 focus:ring-[#00B8D9]/25 transition-all placeholder:text-slate-400 font-medium"
+                              className={inputClass}
                             />
                           </div>
                           <div>
-                            <label className="text-[10px] tracking-[0.3em] uppercase text-slate-600 font-bold block mb-2">
-                              Suburb
-                            </label>
+                            <label htmlFor="c-email" className={labelClass}>Email</label>
                             <input
+                              id="c-email"
+                              type="email"
+                              inputMode="email"
+                              autoComplete="email"
+                              placeholder="jane@email.com"
+                              value={form.email}
+                              onChange={(e) => update('email', e.target.value)}
+                              style={{ fontSize: '16px' }}
+                              className={inputClass}
+                            />
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-[1.6fr_1fr] gap-4">
+                          <div>
+                            <label htmlFor="c-address" className={labelClass}>Street address</label>
+                            <input
+                              id="c-address"
                               type="text"
+                              autoComplete="street-address"
+                              placeholder="12 Wattle Grove"
+                              value={form.address}
+                              onChange={(e) => update('address', e.target.value)}
+                              style={{ fontSize: '16px' }}
+                              className={inputClass}
+                            />
+                          </div>
+                          <div>
+                            <label htmlFor="c-suburb" className={labelClass}>Suburb</label>
+                            <input
+                              id="c-suburb"
+                              type="text"
+                              autoComplete="address-level2"
                               placeholder="Templestowe"
                               value={form.suburb}
                               onChange={(e) => update('suburb', e.target.value)}
                               style={{ fontSize: '16px' }}
-                              className="w-full bg-white border-2 border-slate-900 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-[#00B8D9] focus:ring-4 focus:ring-[#00B8D9]/25 transition-all placeholder:text-slate-400 font-medium"
+                              className={inputClass}
                             />
                           </div>
                         </div>
 
                         <div>
-                          <label className="text-[10px] tracking-[0.3em] uppercase text-slate-600 font-bold block mb-2">
-                            What needs cleaning? *
-                          </label>
+                          <label htmlFor="c-message" className={labelClass}>What needs cleaning? *</label>
                           <textarea
+                            id="c-message"
                             rows={5}
                             placeholder="Driveway, house, roof… give us the details"
                             value={form.message}
                             onChange={(e) => update('message', e.target.value)}
                             style={{ fontSize: '16px' }}
-                            className="w-full bg-white border-2 border-slate-900 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-[#00B8D9] focus:ring-4 focus:ring-[#00B8D9]/25 transition-all placeholder:text-slate-400 resize-none font-medium"
+                            className={`${inputClass} resize-none`}
                           />
                         </div>
 
